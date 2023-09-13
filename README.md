@@ -15,7 +15,7 @@ _codo_ muss von einem Server-Administrator eingerichtet werden und wird dann ein
 Die Installation erfordert zunächst die Einrichtung einer Instanz der _Aam Digital_ Plattform.
 Diese kann anschließend sehr einfach als _codo_ Systen konfiguriert werden.
 
-### Aam Digital Setup
+### Plattform Setup
 wie hier beschrieben: https://github.com/Aam-Digital/ndb-setup/
 
 ### Konfiguration als codo System
