@@ -1,5 +1,5 @@
 # codo
-*Das Datentool für qualitätssichere Patenschaftsprojekte*
+*Das Daten-Tool für Mentoringprojekte*
 
 codo basiert auf dem Open Source System der Case Management Plattform [Aam Digital](https://github.com/Aam-Digital/ndb-core).
 Im dortigen Repository finden sich Source Code und technische Details: https://github.com/Aam-Digital/ndb-core
