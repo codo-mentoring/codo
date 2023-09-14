@@ -162,7 +162,13 @@
             }
           },
           {
-            "component": "BirthdayDashboard"
+            "component": "BirthdayDashboard",
+            "config": {
+              "entities": {
+                "Child": "dateOfBirth",
+                "School": "dateOfBirth"
+              }
+            }
           }
         ]
       }
