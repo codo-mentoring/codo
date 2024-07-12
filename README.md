@@ -21,7 +21,7 @@ wie hier beschrieben: https://github.com/Aam-Digital/ndb-setup/
 ### Konfiguration als codo System
 
 #### Für Setup-Skript (ndb-setup)
-1. Clonen des Setup-Projekts: 
+1. Clonen des Setup-Projekts: [Aam-Digital/ndb-setup](https://github.com/Aam-Digital/ndb-setup)
 2. Kopieren der Dateien aus diesem Repository hier in das Setup-Projekt unter `baseConfigs/codo`
 3. Das Setup-Skript kann jetzt für "codo" ausgeführt werden.
 
