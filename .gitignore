@@ -1,0 +1,2 @@
+# do not check in actual realm config with credentials / email
+realm_config.json
