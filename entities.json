@@ -1,1850 +1,2199 @@
 {
-  "_id": "Config:CONFIG_ENTITY",
-  "data": {
-    "appConfig:map": {
-      "start": [
-        53.5520952,
-        9.9933974
-      ]
-    },
-    "navigationMenu": {
-      "items": [
-        {
-          "name": "Dashboard",
-          "icon": "home",
-          "link": "/"
-        },
-        {
-          "name": "Mentees",
-          "icon": "fas star-half",
-          "link": "/mentees"
-        },
-        {
-          "name": "Mentor:innen",
-          "icon": "far star-half",
-          "link": "/mentors"
-        },
-        {
-          "name": "Pre-Matching",
-          "icon": "certificate",
-          "link": "/matching"
-        },
-        {
-          "name": "Patenschaften",
-          "icon": "star-half-alt",
-          "link": "/patenschaften"
-        },
-        {
-          "name": "Notizen",
-          "icon": "file-alt",
-          "link": "/note"
-        },
-        {
-          "name": "Aufgaben",
-          "icon": "tasks",
-          "link": "/todo"
-        },
-        {
-          "name": "Reports",
-          "icon": "line-chart",
-          "link": "/report"
-        },
-        {
-          "name": "Mitarbeiter:innen",
-          "icon": "users",
-          "link": "/user"
-        },
-        {
-          "name": "Import",
-          "icon": "file-import",
-          "link": "/import"
-        },
-        {
-          "name": "Admin",
-          "icon": "wrench",
-          "link": "/admin"
-        },
-        {
-          "name": "Database Conflicts",
-          "icon": "wrench",
-          "link": "/admin/conflicts"
-        },
-        {
-          "name": "Hilfe",
-          "icon": "question",
-          "link": "/help"
-        }
-      ]
-    },
-    "view:": {
-      "component": "Dashboard",
-      "config": {
-        "widgets": [
-          {
-            "component": "DashboardShortcutWidget",
-            "config": {
-              "shortcuts": [
-                {
-                  "label": "Mentee hinzufügen",
-                  "icon": "fas star-half",
-                  "link": "/mentees/new"
-                },
-                {
-                  "label": "Mentor:in hinzufügen",
-                  "icon": "far star-half",
-                  "link": "/mentors/new"
-                },
-                {
-                  "label": "Daten importieren",
-                  "icon": "file-import",
-                  "link": "/import"
-                },
-                {
-                  "label": "Öffentliches Mentee-Formular",
-                  "icon": "cloud-upload-alt",
-                  "link": "/public-form/1"
-                }
-              ]
-            }
-          },
-          {
-            "component": "EntityCountDashboard",
-            "config": {
-              "entity": "Child",
-              "groupBy": "projectStatus"
-            }
-          },
-          {
-            "component": "EntityCountDashboard",
-            "config": {
-              "entity": "Child",
-              "groupBy": "gender"
-            }
-          },
-          {
-            "component": "EntityCountDashboard",
-            "config": {
-              "entity": "School",
-              "groupBy": "gender"
-            }
-          },
-          {
-            "component": "EntityCountDashboard",
-            "config": {
-              "entity": "ChildSchoolRelation",
-              "groupBy": "status"
-            }
-          },
-          {
-            "component": "EntityCountDashboard",
-            "config": {
-              "entity": "ChildSchoolRelation",
-              "groupBy": "foerderungDurch"
-            }
-          },
-          {
-            "component": "TodosDashboard"
-          },
-          {
-            "component": "NotesDashboard",
-            "config": {
-              "sinceDays": 28,
-              "fromBeginningOfWeek": false,
-              "mode": "with-recent-notes"
-            }
-          },
-          {
-            "component": "NotesDashboard",
-            "config": {
-              "sinceDays": 28,
-              "fromBeginningOfWeek": false,
-              "mode": "without-recent-notes"
-            }
-          },
-          {
-            "component": "BirthdayDashboard"
-          }
-        ]
-      }
-    },
-    "view:note": {
-      "component": "NotesManager",
-      "config": {
-        "title": "Notizen",
-        "includeEventNotes": false,
-        "showEventNotesToggle": false,
-        "columns": [
-          {
-            "id": "children",
-            "noSorting": true
-          }
-        ],
-        "columnGroups": {
-          "default": "Standard",
-          "mobile": "Kurzübersicht",
-          "groups": [
+  "docs": [
+    {
+      "_id": "Config:CONFIG_ENTITY",
+      "data": {
+        "navigationMenu": {
+          "items": [
             {
-              "name": "Standard",
-              "columns": [
-                "date",
-                "subject",
-                "category",
-                "authors",
-                "children"
-              ]
+              "label": "Dashboard",
+              "icon": "home",
+              "link": "/"
             },
             {
-              "name": "Kurzübersicht",
-              "columns": [
-                "date",
-                "subject",
-                "children"
-              ]
+              "label": "Mentees",
+              "icon": "user",
+              "link": "/mentee"
+            },
+            {
+              "label": "Mentor:innen",
+              "icon": "user",
+              "link": "/mentor"
+            },
+            {
+              "label": "Pre-Matching",
+              "icon": "user-plus",
+              "link": "/matching"
+            },
+            {
+              "label": "Patenschaften",
+              "icon": "users",
+              "link": "/patenschaften"
+            },
+            {
+              "label": "Notizen",
+              "icon": "file-alt",
+              "link": "/note"
+            },
+            {
+              "label": "Aufgaben",
+              "icon": "tasks",
+              "link": "/todo"
+            },
+            {
+              "label": "Berichte",
+              "icon": "line-chart",
+              "link": "/report"
+            },
+            {
+              "label": "Mitarbeiter:innen",
+              "icon": "users-gear",
+              "link": "/user"
+            },
+            {
+              "label": "Import",
+              "icon": "file-import",
+              "link": "/import"
+            },
+            {
+              "label": "Admin",
+              "icon": "wrench",
+              "link": "/admin"
+            },
+            {
+              "label": "Hilfe",
+              "icon": "question",
+              "link": "/help"
             }
           ]
         },
-        "filters": [
-          {
-            "id": "status",
-            "label": "Status",
-            "type": "prebuilt"
-          },
-          {
-            "id": "date"
-          },
-          {
-            "id": "category",
-            "display": "dropdown"
-          },
-          {
-            "id": "authors"
-          }
-        ]
-      }
-    },
-    "view:admin": {
-      "component": "Admin",
-      "permittedUserRoles": [
-        "admin_app"
-      ]
-    },
-    "view:admin/conflicts": {
-      "permittedUserRoles": [
-        "admin_app"
-      ],
-      "component": "ConflictResolution"
-    },
-    "view:help": {
-      "component": "MarkdownPage",
-      "config": {
-        "markdownFile": "assets/help/help.de.md"
-      }
-    },
-    "view:import": {
-      "component": "Import"
-    },
-    "entity:User": {
-      "label": "Mitarbeiter:in",
-      "labelPlural": "Mitarbeiter:innen",
-      "icon": "users",
-      "toStringAttributes": [
-        "vorname",
-        "nachname"
-      ],
-      "attributes": [
-        {
-          "name": "vorname",
-          "schema": {
-            "dataType": "string",
-            "label": "Vorname"
-          }
-        },
-        {
-          "name": "nachname",
-          "schema": {
-            "dataType": "string",
-            "label": "Nachname"
-          }
-        }
-      ]
-    },
-    "view:user": {
-      "component": "EntityList",
-      "config": {
-        "entity": "User",
-        "columns": [
-          "name",
-          "vorname",
-          "nachname"
-        ]
-      }
-    },
-    "view:user/:id": {
-      "component": "EntityDetails",
-      "config": {
-        "entity": "User",
-        "panels": [
-          {
-            "title": "Informationen",
-            "components": [
+        "view:": {
+          "component": "Dashboard",
+          "config": {
+            "widgets": [
               {
-                "title": "",
-                "component": "Form",
+                "component": "DashboardShortcutWidget",
                 "config": {
-                  "cols": [
-                    [
-                      "name",
-                      "vorname",
-                      "nachname"
-                    ]
+                  "shortcuts": [
+                    {
+                      "label": "Mentee hinzufügen",
+                      "icon": "user",
+                      "link": "/mentee/new"
+                    },
+                    {
+                      "label": "Mentor:in hinzufügen",
+                      "icon": "user",
+                      "link": "/mentor/new"
+                    },
+                    {
+                      "label": "Daten importieren",
+                      "icon": "file-import",
+                      "link": "/import"
+                    },
+                    {
+                      "label": "Öffentliches Mentee-Formular",
+                      "icon": "cloud-upload-alt",
+                      "link": "/public-form/1"
+                    },
+                    {
+                      "label": "Öffentliches Mentor:innen-Formular",
+                      "icon": "cloud-upload-alt",
+                      "link": "/public-form/mentor"
+                    }
                   ]
+                }
+              },
+              {
+                "component": "EntityCountDashboard",
+                "config": {
+                  "entity": "Child",
+                  "groupBy": "projectStatus"
+                }
+              },
+              {
+                "component": "EntityCountDashboard",
+                "config": {
+                  "entity": "Child",
+                  "groupBy": "gender"
+                }
+              },
+              {
+                "component": "EntityCountDashboard",
+                "config": {
+                  "entity": "School",
+                  "groupBy": "gender"
+                }
+              },
+              {
+                "component": "EntityCountDashboard",
+                "config": {
+                  "entity": "ChildSchoolRelation",
+                  "groupBy": "status"
+                }
+              },
+              {
+                "component": "EntityCountDashboard",
+                "config": {
+                  "entity": "ChildSchoolRelation",
+                  "groupBy": "foerderungDurch"
+                }
+              },
+              {
+                "component": "TodosDashboard"
+              },
+              {
+                "component": "BirthdayDashboard",
+                "config": {
+                  "entities": {
+                    "Child": "dateOfBirth",
+                    "School": "dateOfBirth"
+                  }
                 }
               }
             ]
-          },
-          {
-            "title": "Benutzer-Account",
-            "components": [
-              {
-                "component": "UserSecurity"
-              }
-            ]
-          }
-        ]
-      }
-    },
-    "entity:Child": {
-      "label": "Mentee",
-      "labelPlural": "Mentees",
-      "icon": "fas star-half",
-      "route": "mentees",
-      "toStringAttributes": [
-        "vorname",
-        "name"
-      ],
-      "attributes": [
-        {
-          "name": "betreuung",
-          "schema": {
-            "dataType": "entity",
-            "label": "Betreut durch",
-            "additional": "User"
           }
         },
-        {
-          "name": "ansprache",
-          "schema": {
-            "dataType": "configurable-enum",
-            "innerDataType": "ansprache",
-            "label": "Ansprache"
-          }
+        "appConfig:usage-analytics": {
+          "url": "https://matomo.aam-digital.org",
+          "site_id": "9"
         },
-        {
-          "name": "vorname",
-          "schema": {
-            "dataType": "string",
-            "label": "Vorname"
-          }
-        },
-        {
-          "name": "name",
-          "schema": {
-            "dataType": "string",
-            "label": "Name"
-          }
-        },
-        {
-          "name": "email",
-          "schema": {
-            "dataType": "string",
-            "label": "Email"
-          }
-        },
-        {
-          "name": "address",
-          "schema": {
-            "dataType": "location",
-            "label": "Adresse"
-          }
-        },
-        {
-          "name": "phone",
-          "schema": {
-            "dataType": "string",
-            "label": "Telefon"
-          }
-        },
-        {
-          "name": "dateOfBirth",
-          "schema": {
-            "dataType": "date-with-age",
-            "label": "Geburtsdatum"
-          }
-        },
-        {
-          "name": "gender",
-          "schema": {
-            "dataType": "configurable-enum",
-            "innerDataType": "genders",
-            "label": "Geschlecht"
-          }
-        },
-        
-        
-        {
-          "name": "sorgeberechtigt",
-          "schema": {
-            "dataType": "string",
-            "label": "Sorgeberechtigte:r"
-          }
-        },
-        {
-          "name": "telSorgeberechtigt",
-          "schema": {
-            "dataType": "string",
-            "label": "Tel. Sorgeberechtigte:r"
-          }
-        },
-        {
-          "name": "emailSorgeberechtigt",
-          "schema": {
-            "dataType": "string",
-            "label": "Email Sorgeberechtigte:r"
-          }
-        },
-        
-        
-        {
-          "name": "schule",
-          "schema": {
-            "dataType": "string",
-            "label": "Schule"
-          }
-        },
-        {
-          "name": "klasse",
-          "schema": {
-            "dataType": "string",
-            "label": "Klasse"
-          }
-        },
-        {
-          "name": "lehrer",
-          "schema": {
-            "dataType": "string",
-            "label": "Klassenlehrer:in"
-          }
-        },
-        {
-          "name": "lehrerNummer",
-          "schema": {
-            "dataType": "string",
-            "label": "Telefon Lehrer:in"
-          }
-        },
-        {
-          "name": "lehrerMail",
-          "schema": {
-            "dataType": "string",
-            "label": "E-Mail Lehrer:in"
-          }
-        },
-        
-        
-        {
-          "name": "admissionDate",
-          "schema": {
-            "dataType": "date-only",
-            "label": "Dabei seit"
-          }
-        },
-        {
-          "name": "unterstuetzungsart",
-          "schema": {
-            "dataType": "string",
-            "label": "Unterstützungsart",
-            "description": "Thema / Schwerpunkt der Patenschaft"
-          }
-        },
-        {
-          "name": "projectStatus",
-          "schema": {
-            "dataType": "configurable-enum",
-            "innerDataType": "mentor-status",
-            "label": "Status"
-          }
-        },
-        {
-          "name": "datenschutz",
-          "schema": {
-            "dataType": "boolean",
-            "label": "Datenschutz eingewilligt"
-          }
-        },
-        {
-          "name": "veroeffentlichungSocialmedia",
-          "schema": {
-            "dataType": "boolean",
-            "label": "Veröffentlichung über soziale Medien"
-          }
-        },
-        
-        
-
-        {
-          "name": "sprache",
-          "schema": {
-            "dataType": "configurable-enum",
-            "additional": "sprache",
-            "label": "Sprache"
-          }
-        },
-        {
-          "name": "herkunft",
-          "schema": {
-            "dataType": "string",
-            "label": "Herkunft"
-          }
-        },
-        {
-          "name": "interessen",
-          "schema": {
-            "dataType": "configurable-enum",
-            "additional": "interessen",
-            "label": "Interessen"
-          }
-        },
-        {
-          "name": "hobbies",
-          "schema": {
-            "dataType": "string",
-            "label": "Hobbies"
-          }
-        },
-        {
-          "name": "mentoringHilfe",
-          "schema": {
-            "dataType": "array",
-            "innerDataType": "configurable-enum",
-            "additional": "hilfen",
-            "label": "Hilfe benötigt für"
-          }
-        },
-        {
-          "name": "mentoringWuensche",
-          "schema": {
-            "dataType": "string",
-            "editComponent": "EditLongText",
-            "label": "Wünsche für das Mentoring"
-          }
-        },
-        {
-          "name": "mentoringGeschlecht",
-          "schema": {
-            "dataType": "configurable-enum",
-            "additional": "genders",
-            "label": "Bevorzugtes Geschlecht"
-          }
-        },
-        
-        {
-          "name": "vorbereitungAbgeschlossen",
-          "schema": {
-            "dataType": "boolean",
-            "label": "Vorbereitung abgeschlossen"
-          }
-        },
-        {
-          "name": "erstgespraech",
-          "schema": {
-            "dataType": "boolean",
-            "label": "Erstgespräch hat stattgefunden"
-          }
-        },
-        {
-          "name": "erstgespraechDatum",
-          "schema": {
-            "dataType": "date-only",
-            "label": "Datum des Erstgespräch"
-          }
-        }
-      ]
-    },
-    "view:mentees": {
-      "component": "ChildrenList",
-      "config": {
-        "columns": [
-          {
-            "view": "DisplayAge",
-            "label": "Alter",
-            "id": "age",
-            "additional": "dateOfBirth"
-          },
-          {
-            "view": "DisplayEntity",
-            "label": "Mentor:in",
-            "id": "schoolId",
-            "additional": "School",
-            "noSorting": true
-          }
-        ],
-        "columnGroups": {
-          "default": "Übersicht",
-          "mobile": "Kurzübersicht",
-          "groups": [
-            {
-              "name": "Übersicht",
-              "columns": [
-                "vorname",
-                "name",
-                "age",
-                "projectStatus",
-                "betreuung",
-                "schule",
-                "klasse",
-                "lehrer"
-              ]
-            },
-            {
-              "name": "Interessen",
-              "columns": [
-                "vorname",
-                "name",
-                "interessen",
-                "mentoringHilfe",
-                "mentoringWuensche",
-                "mentoringGeschlecht",
-                "sprache",
-                "herkunft"
-              ]
-            },
-            {
-              "name": "Kurzübersicht",
-              "columns": [
-                "vorname",
-                "name",
-                "age"
-              ]
-            }
+        "appConfig:map": {
+          "start": [
+            53.5520952,
+            9.9933974
           ]
         },
-        "filters": [
-          {
-            "id": "projectStatus"
-          },
-          {
-            "id": "gender"
-          },
-          {
-            "id": "betreuung"
-          },
-          {
-            "id": "schule"
-          }
-        ]
-      }
-    },
-    "view:mentees/:id": {
-      "component": "EntityDetails",
-      "config": {
-        "entity": "Child",
-        "panels": [
-          {
-            "title": "Übersicht",
-            "components": [
+        "view:note": {
+          "component": "NotesManager",
+          "config": {
+            "title": "Notizen",
+            "includeEventNotes": false,
+            "showEventNotesToggle": false,
+            "columns": [
               {
-                "title": "",
-                "component": "Form",
-                "config": {
-                  "cols": [
-                    [
-                      "vorname",
-                      "name",
-                      "gender",
-                      "dateOfBirth"
-                    ],
-                    [
-                      "projectStatus",
-                      "admissionDate",
-                      "betreuung",
-                      "datenschutz",
-                      "veroeffentlichungSocialmedia"
-                    ],
-                    [
-                      "phone",
-                      "email",
-                      "address",
-                      "sorgeberechtigt",
-                      "emailSorgeberechtigt",
-                      "telSorgeberechtigt"
-                    ],
-                    [
-                      "schule",
-                      "klasse",
-                      "lehrer",
-                      "lehrerMail",
-                      "lehrerNummer"
-                    ],
-                    [
-                      "sprache",
-                      "herkunft",
-                      "interessen",
-                      "hobbies",
-                      "mentoringHilfe",
-                      "mentoringWuensche",
-                      "mentoringGeschlecht"
-                    ]
-                  ]
-                }
+                "id": "children",
+                "noSorting": true
               }
-            ]
-          },
-          {
-            "title": "Vorbereitung",
-            "components": [
-              {
-                "title": "",
-                "component": "Form",
-                "config": {
-                  "cols": [
-                    [
-                      "vorbereitungAbgeschlossen",
-                      "unterstuetzungsart"
-                    ],
-                    [
-                      "erstgespraech",
-                      "erstgespraechDatum"
-                    ],
-                    [
-                      "projectStatus"
-                    ]
-                  ]
-                }
-              },
-              {
-                "title": "Notizen",
-                "component": "NotesRelatedToEntity",
-                "config": {
+            ],
+            "columnGroups": {
+              "default": "Standard",
+              "mobile": "Kurzübersicht",
+              "groups": [
+                {
+                  "name": "Standard",
                   "columns": [
-                    {
-                      "id": "date",
-                      "visibleFrom": "xs"
-                    },
-                    {
-                      "id": "subject",
-                      "visibleFrom": "xs"
-                    },
-                    {
-                      "id": "text",
-                      "visibleFrom": "md"
-                    },
-                    {
-                      "id": "authors",
-                      "visibleFrom": "md"
-                    }
-                  ],
-                  "filter": {
-                    "category.id": "VORBEREITUNG_GESPRÄCH"
-                  }
-                }
-              }
-            ]
-          },
-          {
-            "title": "Patenschaft/en & Matching",
-            "components": [
-              {
-                "title": "Aktive & Frühere Patenschaften",
-                "component": "ChildSchoolOverview",
-                "config": {
-                  "clickMode": "navigate",
-                  "single": false,
-                  "showInactive": true,
+                    "date",
+                    "subject",
+                    "category",
+                    "authors",
+                    "children"
+                  ]
+                },
+                {
+                  "name": "Kurzübersicht",
                   "columns": [
-                    {
-                      "id": "start",
-                      "visibleFrom": "sm"
-                    },
-                    {
-                      "id": "end",
-                      "visibleFrom": "sm"
-                    },
-                    "schoolId"
+                    "date",
+                    "subject",
+                    "children"
                   ]
                 }
-              },
-              {
-                "title": "Matching",
-                "component": "MatchingEntities",
-                "config": {
-                  "leftSide": { }
-                }
-              }
-            ]
-          },
-          {
-            "title": "Notizen & Aufgaben",
-            "components": [
-              {
-                "component": "NotesRelatedToEntity",
-                "config": {
-                  "columns": [
-                    {
-                      "id": "date",
-                      "visibleFrom": "xs"
-                    },
-                    {
-                      "id": "subject",
-                      "visibleFrom": "xs"
-                    },
-                    {
-                      "id": "text",
-                      "visibleFrom": "md"
-                    },
-                    {
-                      "id": "authors",
-                      "visibleFrom": "md"
-                    }
-                  ]
-                }
-              },
-              {
-                "title": "Aufgaben",
-                "component": "TodosRelatedToEntity"
-              }
-            ]
-          }
-        ]
-      }
-    },
-    "entity:School": {
-      "label": "Mentor:in",
-      "labelPlural": "Mentor:innen",
-      "icon": "far star-half",
-      "route": "mentors",
-      "toStringAttributes": [
-        "vorname",
-        "name"
-      ],
-      "attributes": [
-      
-        {
-          "name": "vorname",
-          "schema": {
-            "dataType": "string",
-            "label": "Vorname"
-          }
-        },
-        {
-          "name": "nachname",
-          "schema": {
-            "dataType": "string",
-            "label": "Nachname"
-          }
-        },
-        {
-          "name": "ansprache",
-          "schema": {
-            "dataType": "configurable-enum",
-            "innerDataType": "ansprache",
-            "label": "Ansprache"
-          }
-        },
-        {
-          "name": "address",
-          "schema": {
-            "dataType": "location",
-            "label": "Adresse"
-          }
-        },
-        {
-          "name": "addressWork",
-          "schema": {
-            "dataType": "location",
-            "label": "Adresse (Arbeitsplatz)"
-          }
-        },
-        {
-          "name": "phone",
-          "schema": {
-            "dataType": "string",
-            "label": "Rufnummer"
-          }
-        },
-        {
-          "name": "email",
-          "schema": {
-            "dataType": "string",
-            "label": "Email"
-          }
-        },
-        {
-          "name": "dateOfBirth",
-          "schema": {
-            "dataType": "date-with-age",
-            "label": "Geburtsdatum"
-          }
-        },
-        {
-          "name": "gender",
-          "schema": {
-            "dataType": "configurable-enum",
-            "innerDataType": "genders",
-            "label": "Geschlecht"
-          }
-        },
-        
-        
-        
-        {
-          "name": "betreuung",
-          "schema": {
-            "dataType": "entity",
-            "label": "Betreut durch",
-            "additional": "User"
-          }
-        },
-        {
-          "name": "projectStatus",
-          "schema": {
-            "dataType": "configurable-enum",
-            "innerDataType": "mentor-status",
-            "label": "Status"
-          }
-        },
-        
-        {
-          "name": "admissionDate",
-          "schema": {
-            "dataType": "date-only",
-            "label": "Dabei seit"
-          }
-        },
-        {
-          "name": "datenschutz",
-          "schema": {
-            "dataType": "boolean",
-            "label": "Datenschutz eingewilligt"
-          }
-        },
-        {
-          "name": "veroeffentlichungSocialmedia",
-          "schema": {
-            "dataType": "boolean",
-            "label": "Veröffentlichung über soziale Medien"
-          }
-        },
-      
-      
-        {
-          "name": "sprachen",
-          "schema": {
-            "dataType": "array",
-            "innerDataType": "configurable-enum",
-            "additional": "sprache",
-            "label": "Sprachkenntnisse"
-          }
-        },
-        {
-          "name": "herkunft",
-          "schema": {
-            "dataType": "string",
-            "label": "Herkunft"
-          }
-        },
-        {
-          "name": "erfahrung",
-          "schema": {
-            "dataType": "string",
-            "labelShort": "Erfahrung",
-            "label": "Erfahrung im Ehrenamt",
-            "description": "Bereits Erfahrung im Ehrenamt gemacht?"
-          }
-        },
-        {
-          "name": "motivation",
-          "schema": {
-            "dataType": "string",
-            "label": "Motivation",
-            "description": "Warum möchten Sie aktiv werden?"
-          }
-        },
-        {
-          "name": "hobbies",
-          "schema": {
-            "dataType": "string",
-            "label": "hobbies"
-          }
-        },
-        
-        {
-          "name": "mentoringHilfe",
-          "schema": {
-            "dataType": "array",
-            "innerDataType": "configurable-enum",
-            "additional": "hilfen",
-            "label": "In welchen Bereich möchte Mentor:in unterstützen"
-          }
-        },
-        
-        
-        {
-          "name": "bemerkungen",
-          "schema": {
-            "dataType": "string",
-            "label": "Bemerkungen",
-            "description": "Alles was uns positiv oder negativ aufgefallen ist",
-            "editComponent": "EditLongText"
-          }
-        },
-        
-        
-        {
-          "name": "fuehrungszeugnisBeantragt",
-          "schema": {
-            "dataType": "boolean",
-            "label": "beantragt"
-          }
-        },
-        {
-          "name": "fuehrungszeugnisEingesehen",
-          "schema": {
-            "dataType": "boolean",
-            "label": "eingesehen"
-          }
-        },
-        {
-          "name": "fuehrungszeugnisGeloescht",
-          "schema": {
-            "dataType": "boolean",
-            "label": "Datei gelöscht",
-            "description": "Das Dokument sollte nach Prüfung aus Datenschutzgründen gelöscht werden"
-          }
-        },
-        {
-          "name": "fuehrungszeugnisGeprueftDurch",
-          "schema": {
-            "dataType": "entity",
-            "additional": "User",
-            "label": "geprüft durch"
-          }
-        },
-        
-        {
-          "name": "auswahlDokumenteVollstaendig",
-          "schema": {
-            "dataType": "boolean",
-            "label": "Auswahldokumente vollständig"
-          }
-        },
-        
-        {
-          "name": "vorbereitungAbgeschlossen",
-          "schema": {
-            "dataType": "boolean",
-            "label": "Vorbereitung abgeschlossen"
-          }
-        }
-      ]
-    },
-    "view:mentors": {
-      "component": "EntityList",
-      "config": {
-        "entity": "School",
-        "columnGroups": {
-          "default": "Übersicht",
-          "mobile": "Kurzübersicht",
-          "groups": [
-            {
-              "name": "Übersicht",
-              "columns": [
-                "vorname",
-                "name",
-                "gender",
-                "betreuung",
-                "projectStatus"
               ]
             },
-            {
-              "name": "Interessen",
-              "columns": [
-                "vorname",
-                "name",
-                "erfahrung",
-                "motivation",
-                "hobbies",
-                "mentoringHilfe",
-                "sprachen",
-                "herkunft"
-              ]
-            },
-            {
-              "name": "Kurzübersicht",
-              "columns": [
-                "vorname",
-                "name"
-              ]
-            }
-          ]
-        },
-        "filters": [
-          {
-            "id": "projectStatus"
-          },
-          {
-            "id": "gender"
-          },
-          {
-            "id": "betreuung"
-          }
-        ]
-      }
-    },
-    "view:mentors/:id": {
-      "component": "EntityDetails",
-      "config": {
-        "entity": "School",
-        "panels": [
-          {
-            "title": "Übersicht",
-            "components": [
+            "filters": [
               {
-                "title": "",
-                "component": "Form",
-                "config": {
-                  "cols": [
-                    [
-                      "vorname",
-                      "name",
-                      "ansprache",
-                      "dateOfBirth",
-                      "gender"
-                    ],
-                    [
-                      "projectStatus",
-                      "admissionDate",
-                      "betreuung",
-                      "datenschutz",
-                      "veroeffentlichungSocialmedia"
-                    ],
-                    [
-                      "phone",
-                      "email",
-                      "address",
-                      "addressWork"
-                    ],
-                    [
-                      "sprachen",
-                      "herkunft",
-                      "erfahrung",
-                      "motivation",
-                      "hobbies",
-                      "mentoringHilfe"
-                    ]
-                  ]
-                }
+                "id": "warningLevel"
+              },
+              {
+                "id": "date"
+              },
+              {
+                "id": "category",
+                "display": "dropdown"
+              },
+              {
+                "id": "authors"
               }
-            ]
-          },
-          {
-            "title": "Auswahl & Vorbereitung",
-            "components": [
+            ],
+            "exportConfig": [
               {
-                "title": "",
-                "component": "Form",
-                "config": {
-                  "cols": [
-                    [
-                      "fuehrungszeugnisBeantragt",
-                      "fuehrungszeugnisEingesehen",
-                      "fuehrungszeugnisGeloescht",
-                      "fuehrungszeugnisGeprueftDurch"
-                    ],
-                    [
-                      "projectStatus",
-                      "vorbereitungAbgeschlossen",
-                      "unterstuetzungsart"
-                    ]
-                  ],
-                  "headers": [
-                    "Führungszeugnis"
-                  ]
-                }
+                "label": "event_id",
+                "query": "_id"
               },
               {
-                "title": "Auswahl (Notizen)",
-                "component": "NotesRelatedToEntity",
-                "config": {
-                  "columns": [
-                    {
-                      "id": "date",
-                      "visibleFrom": "xs"
-                    },
-                    {
-                      "id": "subject",
-                      "visibleFrom": "xs"
-                    },
-                    {
-                      "id": "text",
-                      "visibleFrom": "md"
-                    },
-                    {
-                      "id": "authors",
-                      "visibleFrom": "md"
-                    }
-                  ],
-                  "filter": {
-                    "category.id": "AUSWAHL"
-                  }
-                }
+                "label": "date",
+                "query": "date"
               },
               {
-                "title": "Vorbereitung (Workshops & Notizen)",
-                "component": "NotesRelatedToEntity",
-                "config": {
-                  "columns": [
-                    {
-                      "id": "date",
-                      "visibleFrom": "xs"
-                    },
-                    {
-                      "id": "subject",
-                      "visibleFrom": "xs"
-                    },
-                    {
-                      "id": "text",
-                      "visibleFrom": "md"
-                    },
-                    {
-                      "id": "authors",
-                      "visibleFrom": "md"
-                    }
-                  ],
-                  "filter": {
-                    "category.id": "VORBEREITUNG_GESPRÄCH"
-                  }
-                }
+                "label": "event title",
+                "query": "subject"
               },
               {
-                "title": "Gesprächsprotokoll Erstgespräch",
-                "component": "Form",
-                "config": {
-                  "cols": [
-                    [
-                      "ansprache",
-                      "motivation",
-                      "motivationDetails",
-                      "erfahrung",
-                      "erfahrungDetails",
-                      "unterstuetzungsart",
-                      "interessen",
-                      "mentoringWuensche",
-                      "unsicherheiten",
-                      "fragen",
-                      "bemerkungen"
-                    ]
-                  ]
-                }
-              }
-            ]
-          },
-          {
-            "title": "Patenschaft/en & Matching",
-            "components": [
-              {
-                "title": "Aktive & Frühere Patenschaften",
-                "component": "ChildSchoolOverview",
-                "config": {
-                  "clickMode": "navigate",
-                  "single": false,
-                  "showInactive": true,
-                  "columns": [
-                    "start",
-                    "end",
-                    "childId"
-                  ]
-                }
+                "label": "event type",
+                "query": "category"
               },
               {
-                "title": "Matching",
-                "component": "MatchingEntities",
-                "config": {
-                  "rightSide": {}
-                }
-              }
-            ]
-          },
-          {
-            "title": "Notizen & Aufgaben",
-            "components": [
-              {
-                "component": "NotesRelatedToEntity",
-                "config": {
-                  "columns": [
-                    {
-                      "id": "date",
-                      "visibleFrom": "xs"
-                    },
-                    {
-                      "id": "subject",
-                      "visibleFrom": "xs"
-                    },
-                    {
-                      "id": "text",
-                      "visibleFrom": "md"
-                    },
-                    {
-                      "id": "authors",
-                      "visibleFrom": "md"
-                    }
-                  ]
-                }
+                "label": "event description",
+                "query": "text"
               },
               {
-                "title": "Aufgaben",
-                "component": "TodosRelatedToEntity"
-              }
-            ]
-          }
-        ]
-      }
-    },
-    "entity:ChildSchoolRelation": {
-      "label": "Patenschaft",
-      "labelPlural": "Patenschaften",
-      "icon": "star-half-alt",
-      "route": "patenschaften",
-      "toStringAttributes": [
-        "name"
-      ],
-      "attributes": [
-        {
-          "name": "name",
-          "schema": {
-            "dataType": "string",
-            "label": "Titel / Bezeichnung",
-            "description": "z.B. 'Patenschaft Max Mustermann - Moritz Müller'; wird in der Anwendung in Listen o.ä. angezeigt",
-            "validators": {
-              "required": true
-            }
-          }
-        },
-        {
-          "name": "abschlussTyp",
-          "schema": {
-            "dataType": "string",
-            "label": "Abschluss-Art",
-            "description": "Wähle hier eine Kategorie des Abschluss zur einfacheren Auswertung."
-          }
-        },
-        {
-          "name": "status",
-          "schema": {
-            "dataType": "configurable-enum",
-            "innerDataType": "patenschaft-status",
-            "label": "Status"
-          }
-        },
-        {
-          "name": "childId",
-          "schema": {
-            "dataType": "entity",
-            "additional": "Child",
-            "label": "Mentee",
-            "validators": {
-              "required": true
-            }
-          }
-        },
-        {
-          "name": "schoolId",
-          "schema": {
-            "dataType": "entity",
-            "additional": "School",
-            "label": "Mentor:in",
-            "validators": {
-              "required": true
-            }
-          }
-        },
-        {
-          "name": "start",
-          "schema": {
-            "dataType": "date-only",
-            "label": "Anfang",
-            "validators": {
-              "required": true
-            }
-          }
-        },
-        {
-          "name": "end",
-          "schema": {
-            "dataType": "date-only",
-            "label": "Ende"
-          }
-        },
-        
-        
-        {
-          "name": "patenschaftsvereinbarung",
-          "schema": {
-            "dataType": "boolean",
-            "label": "Patenschaftsvereinbarung"
-          }
-        },
-        {
-          "name": "patenschaftsvereinbarungDatei",
-          "schema": {
-            "dataType": "file",
-            "label": "Patenschaftsvereinbarung (Datei)"
-          }
-        },
-        {
-          "name": "msmVereinbarung",
-          "schema": {
-            "dataType": "boolean",
-            "label": "Patenschaftsvereinbarung MsM"
-          }
-        },
-        
-        
-        {
-          "name": "foerderungDurch",
-          "schema": {
-            "dataType": "configurable-enum",
-            "innerDataType": "foerderer",
-            "label": "gefördert durch"
-          }
-        }
-      ]
-    },
-    "view:patenschaften": {
-      "component": "EntityList",
-      "config": {
-        "entity": "ChildSchoolRelation",
-        "columns": [
-          "name",
-          "start",
-          "end",
-          {
-            "id": "childId",
-            "noSorting": true
-          },
-          {
-            "id": "schoolId",
-            "noSorting": true
-          },
-          "status",
-          "foerderungDurch"
-        ],
-        "filters": [
-          {
-            "id": "isActive",
-            "type": "boolean",
-            "default": "true",
-            "label": "Patenschaften",
-            "true": "Aktiv",
-            "false": "Beendet",
-            "all": "Alle"
-          },
-          {
-            "id": "status"
-          },
-          {
-            "id": "foerderungDurch"
-          }
-        ]
-      }
-    },
-    "view:patenschaften/:id": {
-      "component": "EntityDetails",
-      "config": {
-        "title": "Patenschaften",
-        "entity": "ChildSchoolRelation",
-        "panels": [
-          {
-            "title": "Übersicht",
-            "components": [
-              {
-                "component": "Form",
-                "config": {
-                  "cols": [
-                    [
-                      "name",
-                      "status",
-                      "childId",
-                      "schoolId",
-                      "start",
-                      "end"
-                    ],
-                    [
-                      "foerderungDurch"
-                    ]
-                  ]
-                }
-              }
-            ]
-          },
-          {
-            "title": "Matching",
-            "components": [
-              {
-                "component": "Form",
-                "config": {
-                  "cols": [
-                    [
-                      "name",
-                      "status",
-                      "childId",
-                      "schoolId",
-                      "start",
-                      "end"
-                    ],
-                    [
-                      "patenschaftsvereinbarung",
-                      "patenschaftsvereinbarungDatei",
-                      "msmVereinbarung"
-                    ]
-                  ],
-                  "headers": [
-                    null,
-                    "Vereinbarung"
-                  ]
-                }
-              },
-              {
-                "component": "NotesRelatedToEntity",
-                "title": "Notizen",
-                "config": {
-                  "columns": [
-                    {
-                      "id": "date",
-                      "visibleFrom": "xs"
-                    },
-                    {
-                      "id": "subject",
-                      "visibleFrom": "xs"
-                    },
-                    {
-                      "id": "text",
-                      "visibleFrom": "md"
-                    },
-                    {
-                      "id": "authors",
-                      "visibleFrom": "md"
-                    }
-                  ],
-                  "filter": {
-                    "category.id": "MATCHING"
-                  }
-                }
-              }
-            ]
-          },
-          {
-            "title": "Begleitung",
-            "components": [
-              {
-                "component": "Form",
-                "config": {
-                  "cols": [
-                    [
-                      "status"
-                    ]
-                  ]
-                }
-              },
-              {
-                "component": "NotesRelatedToEntity",
-                "title": "Notizen",
-                "config": {
-                  "columns": [
-                    {
-                      "id": "date",
-                      "visibleFrom": "xs"
-                    },
-                    {
-                      "id": "subject",
-                      "visibleFrom": "xs"
-                    },
-                    {
-                      "id": "text",
-                      "visibleFrom": "md"
-                    },
-                    {
-                      "id": "authors",
-                      "visibleFrom": "md"
-                    }
-                  ],
-                  "filter": {
-                    "category.id": "BEGLEITUNG_GESPRÄCH"
-                  }
-                }
-              },
-              {
-                "title": "Aufgaben",
-                "component": "TodosRelatedToEntity"
-              }
-            ]
-          },
-          {
-            "title": "Abschluss",
-            "components": [
-              {
-                "component": "Form",
-                "config": {
-                  "cols": [
-                    [
-                      "end",
-                      "abschlussTyp"
-                    ]
-                  ]
-                }
-              },
-              {
-                "title": "Notizen",
-                "component": "NotesRelatedToEntity",
-                "config": {
-                  "columns": [
-                    {
-                      "id": "date",
-                      "visibleFrom": "xs"
-                    },
-                    {
-                      "id": "subject",
-                      "visibleFrom": "xs"
-                    },
-                    {
-                      "id": "text",
-                      "visibleFrom": "md"
-                    },
-                    {
-                      "id": "authors",
-                      "visibleFrom": "md"
-                    }
-                  ],
-                  "filter": {
-                    "category.id": "ABSCHLUSS"
-                  }
-                }
-              }
-            ]
-          },
-          {
-            "title": "Notizen & Aufgaben",
-            "components": [
-              {
-                "title": "Notizen",
-                "component": "NotesRelatedToEntity",
-                "config": {
-                  "columns": [
-                    {
-                      "id": "date",
-                      "visibleFrom": "xs"
-                    },
-                    {
-                      "id": "subject",
-                      "visibleFrom": "xs"
-                    },
-                    {
-                      "id": "text",
-                      "visibleFrom": "md"
-                    },
-                    {
-                      "id": "authors",
-                      "visibleFrom": "md"
-                    }
-                  ]
-                }
-              },
-              {
-                "title": "Aufgaben",
-                "component": "TodosRelatedToEntity"
-              }
-            ]
-          }
-        ]
-      }
-    },
-    "entity:Note": {
-      "attributes": [
-        {
-          "name": "children",
-          "schema": {
-            "dataType": "entity-array",
-            "additional": "Child",
-            "label": "Mentees",
-            "editComponent": "EditAttendance"
-          }
-        },
-        {
-          "name": "schools",
-          "schema": {
-            "dataType": "entity-array",
-            "additional": "School",
-            "label": "Mentor:innen"
-          }
-        },
-        {
-          "name": "relatedEntities",
-          "schema": {
-            "dataType": "entity-array",
-            "additional": "ChildSchoolRelation",
-            "label": "Patenschaft/en"
-          }
-        },
-        {
-          "name": "category",
-          "schema": {
-            "dataType": "configurable-enum",
-            "innerDataType": "interaction-type",
-            "label": "Kategorie",
-            "validators": {
-              "required": true
-            }
-          }
-        }
-      ]
-    },
-    "view:report": {
-      "component": "Reporting",
-      "config": {
-        "reports": [
-          {
-            "title": "Gesamt-Übersicht",
-            "aggregationDefinitions": [
-              {
-                "label": "Patenschaften neu verknüpft",
-                "query": "ChildSchoolRelation:toArray[*start >= ? & start <= ?]"
-              },
-              {
-                "label": "Mentees aufgenommen",
-                "query": "Child:toArray[*admissionDate >= ? & admissionDate <= ?]"
-              },
-              {
-                "label": "Mentor:innen aufgenommen",
-                "query": "School:toArray[*admissionDate >= ? & admissionDate <= ?]"
-              },
-              {
-                "label": "Aktueller Stand",
-                "aggregations": [
+                "query": ":getAttendanceArray(true)",
+                "subQueries": [
                   {
-                    "label": "Patenschaften gesamt",
-                    "query": "ChildSchoolRelation:toArray",
-                    "groupBy": [
-                      "status",
-                      "foerderungDurch"
+                    "query": ".participant:toEntities(Child)",
+                    "subQueries": [
+                      {
+                        "label": "participant_id",
+                        "query": "_id"
+                      },
+                      {
+                        "label": "participant",
+                        "query": "name"
+                      },
+                      {
+                        "label": "gender",
+                        "query": "gender"
+                      },
+                      {
+                        "label": "religion",
+                        "query": "religion"
+                      }
                     ]
                   },
                   {
-                    "label": "Mentees gesamt",
-                    "query": "Child:toArray",
-                    "groupBy": [
-                      "projectStatus",
-                      "gender"
-                    ]
+                    "label": "status",
+                    "query": ".status._status.id"
                   },
                   {
-                    "label": "Mentor:innen gesamt",
-                    "query": "School:toArray",
-                    "groupBy": [
-                      "projectStatus",
-                      "gender"
+                    "query": ".school:toEntities(School)",
+                    "subQueries": [
+                      {
+                        "label": "school_name",
+                        "query": "name"
+                      },
+                      {
+                        "label": "school_id",
+                        "query": "entityId"
+                      }
                     ]
                   }
                 ]
               }
             ]
           }
-        ]
-      }
-    },
-    
-    
-    "appConfig:matching-entities": {
-      "matchActionLabel": "Pre-Match erstellen",
-      "columns": [
-        ["name", "name"],
-        ["mentoringGeschlecht", "gender"],
-        ["mentoringHilfe","mentoringHilfe"],
-        ["distance", null]
-      ],
-      "rightSide": {
-          "entityType": "School",
-          "availableFilters": [
-            { "id": "gender" },
-            { "id": "mentoringHilfe" }
-          ],
-          "prefilter": {
-            "$or": [
-              { "projectStatus.id": "VORBEREITUNG" },
-              { "projectStatus.id": "MATCHING_BEREIT" }
+        },
+        "view:note/:id": {
+          "component": "NoteDetails",
+          "config": {
+            "bottomForm": [
+              "children",
+              "schools",
+              "relatedEntities"
             ]
           }
         },
-        "leftSide": {
-          "entityType": "Child",
-          "availableFilters": [
-            { "id": "gender" },
-            { "id": "mentoringHilfe" }
-          ],
-          "prefilter": {
-            "$or": [
-              { "projectStatus.id": "VORBEREITUNG" },
-              { "projectStatus.id": "MATCHING_BEREIT" }
+        "view:site-settings/:id": {
+          "component": "EntityDetails",
+          "config": {
+            "entity": "SiteSettings",
+            "panels": [
+              {
+                "components": [
+                  {
+                    "component": "Form",
+                    "config": {
+                      "fieldGroups": [
+                        {
+                          "fields": [
+                            "logo",
+                            "favicon"
+                          ]
+                        },
+                        {
+                          "fields": [
+                            "siteName",
+                            "defaultLanguage",
+                            "displayLanguageSelect"
+                          ]
+                        },
+                        {
+                          "fields": [
+                            "primary",
+                            "secondary",
+                            "error",
+                            "font"
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
             ]
           }
         },
-      "onMatch": {
-        "newEntityType": "ChildSchoolRelation",
-        "newEntityMatchPropertyLeft": "childId",
-        "newEntityMatchPropertyRight": "schoolId",
-        "columnsToReview": ["name", "start", "childId", "schoolId"]
-      }
-    },
-    
-    "view:matching": {
-      "component": "MatchingEntities"
-    },
-    "entity:Todo": {
-      "attributes": [
-        {
-          "name": "relatedEntities",
-          "schema": {
-            "label": "Verknüpfte Datensätze",
-            "dataType": "entity-array",
-            "additional": [
-              "Child",
-              "School",
-              "ChildSchoolRelation"
+        "view:import": {
+          "component": "Import"
+        },
+        "entity:User": {
+          "label": "Mitarbeiter:in",
+          "labelPlural": "Mitarbeiter:innen",
+          "icon": "users-gear",
+          "toStringAttributes": [
+            "vorname",
+            "name"
+          ],
+          "attributes": {
+            "vorname": {
+              "dataType": "string",
+              "label": "Vorname",
+              "_isCustomizedField": true
+            },
+            "name": {
+              "dataType": "string",
+              "label": "Nachname",
+              "_isCustomizedField": true
+            }
+          },
+          "hasPII": true
+        },
+        "view:user": {
+          "component": "EntityList",
+          "config": {
+            "columns": [
+              "vorname",
+              "name"
             ],
-            "showInDetailsView": true
+            "entityType": "User"
+          }
+        },
+        "view:user/:id": {
+          "component": "EntityDetails",
+          "config": {
+            "panels": [
+              {
+                "title": "Informationen",
+                "components": [
+                  {
+                    "title": "",
+                    "component": "Form",
+                    "config": {
+                      "fieldGroups": [
+                        {
+                          "fields": [
+                            "vorname",
+                            "name"
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "title": "Benutzer-Account",
+                "components": [
+                  {
+                    "component": "UserSecurity"
+                  }
+                ]
+              }
+            ],
+            "entityType": "User"
+          }
+        },
+        "view:help": {
+          "component": "MarkdownPage",
+          "config": {
+            "markdownFile": "assets/help/help.de.md"
+          }
+        },
+        "entity:School": {
+          "label": "Mentor:in",
+          "labelPlural": "Mentor:innen",
+          "icon": "user",
+          "route": "mentor",
+          "toStringAttributes": [
+            "vorname",
+            "name"
+          ],
+          "attributes": {
+            "motivation": {
+              "_isCustomizedField": true,
+              "dataType": "string",
+              "label": "Motivation",
+              "description": ""
+            },
+            "motivationDetails": {
+              "dataType": "long-text",
+              "label": "Motivation (Details)",
+              "_isCustomizedField": true
+            },
+            "erfahrung": {
+              "dataType": "boolean",
+              "label": "Erfahrung in der Arbeit mit Jugendlichen",
+              "_isCustomizedField": true
+            },
+            "erfahrungDetails": {
+              "dataType": "long-text",
+              "label": "Erfahrung (Details)",
+              "_isCustomizedField": true
+            },
+            "unterstuetzungsart": {
+              "_isCustomizedField": true,
+              "dataType": "configurable-enum",
+              "label": "Mögliche Themenschwerpunkte einer Patenschaft",
+              "labelShort": "Thema",
+              "isArray": true,
+              "additional": "mglicheThemenschwerpunkteEinerPatenschaft"
+            },
+            "interessen": {
+              "dataType": "long-text",
+              "label": "Interessen, Hobbies, Freizeit",
+              "_isCustomizedField": true
+            },
+            "wuenscheCoachee": {
+              "dataType": "long-text",
+              "label": "Potentielle*r Mentee",
+              "description": "Hast du Wünsche bzgl. eines potenziellen Coachees? • Alter • Themen • Sprache • Anderes?",
+              "_isCustomizedField": true
+            },
+            "unsicherheiten": {
+              "dataType": "long-text",
+              "label": "Ängste / Unsicherheiten",
+              "description": "Hast du Befürchtungen, Ängste oder Unsicherheiten? • Im Umgang mit Coachee • In Bezug auf Coaching (Methode / Ablauf) • Bestimmte Themen • persönliches",
+              "_isCustomizedField": true
+            },
+            "fragen": {
+              "dataType": "long-text",
+              "label": "Fragen",
+              "_isCustomizedField": true
+            },
+            "bemerkungen": {
+              "dataType": "long-text",
+              "label": "Bemerkungen",
+              "description": "Alles was uns positiv oder negativ aufgefallen ist",
+              "_isCustomizedField": true
+            },
+            "fuehrungszeugnisBeantragt": {
+              "dataType": "boolean",
+              "label": "beantragt",
+              "_isCustomizedField": true
+            },
+            "fuehrungszeugnisEingesehen": {
+              "dataType": "boolean",
+              "label": "eingesehen",
+              "_isCustomizedField": true
+            },
+            "fuehrungszeugnisGeloescht": {
+              "_isCustomizedField": true,
+              "dataType": "boolean",
+              "label": "Datei gelöscht",
+              "description": "Das Dokument muss Prüfung aus Datenschutzgründen gelöscht werden"
+            },
+            "fuehrungszeugnisGeprueftDurch": {
+              "dataType": "entity",
+              "additional": "User",
+              "label": "geprüft durch",
+              "_isCustomizedField": true
+            },
+            "auswahlDokumenteVollstaendig": {
+              "dataType": "boolean",
+              "label": "Auswahldokumente vollständig",
+              "_isCustomizedField": true
+            },
+            "vorbereitungAbgeschlossen": {
+              "dataType": "boolean",
+              "label": "Vorbereitung abgeschlossen",
+              "_isCustomizedField": true
+            },
+            "vorname": {
+              "dataType": "string",
+              "label": "Vorname",
+              "_isCustomizedField": true
+            },
+            "name": {
+              "dataType": "string",
+              "label": "Nachname",
+              "_isCustomizedField": true
+            },
+            "ansprache": {
+              "dataType": "configurable-enum",
+              "label": "Ansprache",
+              "_isCustomizedField": true,
+              "additional": "ansprache"
+            },
+            "betreuung": {
+              "dataType": "entity",
+              "label": "Betreut durch",
+              "additional": "User",
+              "_isCustomizedField": true
+            },
+            "address": {
+              "_isCustomizedField": true,
+              "dataType": "location",
+              "label": "Adresse"
+            },
+            "addressWork": {
+              "_isCustomizedField": true,
+              "dataType": "location",
+              "label": "Adresse (Arbeitsplatz)"
+            },
+            "projectStatus": {
+              "_isCustomizedField": true,
+              "dataType": "configurable-enum",
+              "label": "Status",
+              "additional": "mentor-status",
+              "isArray": false
+            },
+            "dateOfBirth": {
+              "dataType": "date-with-age",
+              "label": "Geburtsdatum",
+              "anonymize": "retain-anonymized",
+              "_isCustomizedField": true
+            },
+            "gender": {
+              "dataType": "configurable-enum",
+              "label": "Geschlecht",
+              "anonymize": "retain",
+              "_isCustomizedField": true,
+              "additional": "genders"
+            },
+            "phone": {
+              "_isCustomizedField": true,
+              "dataType": "string",
+              "label": "Rufnummer"
+            },
+            "email": {
+              "dataType": "string",
+              "label": "Email",
+              "_isCustomizedField": true
+            },
+            "admissionDate": {
+              "dataType": "date-only",
+              "label": "Dabei seit",
+              "anonymize": "retain-anonymized",
+              "_isCustomizedField": true
+            },
+            "gefrdertDurch": {
+              "_isCustomizedField": true,
+              "label": "gefördert durch MsM",
+              "dataType": "boolean"
+            },
+            "organisation": {
+              "_isCustomizedField": true,
+              "label": "Organisation",
+              "dataType": "string"
+            },
+            "bundesland": {
+              "_isCustomizedField": true,
+              "label": "Bundesland",
+              "dataType": "string"
+            },
+            "fhrungszeugnis": {
+              "_isCustomizedField": true,
+              "label": "Führungszeugnis",
+              "dataType": "configurable-enum",
+              "additional": "fhrungszeugnis"
+            },
+            "selbstverpflichtungserklrung": {
+              "_isCustomizedField": true,
+              "label": "Selbstverpflichtungserklärung",
+              "dataType": "boolean"
+            },
+            "amVorbereitungsseminarTeilgenommen": {
+              "_isCustomizedField": true,
+              "label": "Am Vorbereitungsseminar teilgenommen",
+              "dataType": "boolean"
+            },
+            "erstgesprch": {
+              "_isCustomizedField": true,
+              "label": "Erstgespräch stattgefunden",
+              "dataType": "boolean"
+            },
+            "gefrdertDurchAffirmative": {
+              "_isCustomizedField": true,
+              "label": "Gefördert durch ",
+              "dataType": "boolean"
+            },
+            "geburtsdatum": {
+              "_isCustomizedField": true,
+              "label": "Geburtsdatum",
+              "dataType": "date-with-age"
+            },
+            "zielgruppe": {
+              "_isCustomizedField": true,
+              "label": "Zielgruppe",
+              "dataType": "configurable-enum",
+              "isArray": true,
+              "additional": "zielgruppe"
+            }
+          },
+          "hasPII": true
+        },
+        "view:mentor": {
+          "component": "EntityList",
+          "config": {
+            "columns": [
+              {
+                "label": "Alter",
+                "id": "age",
+                "additional": "dateOfBirth",
+                "viewComponent": "DisplayAge"
+              }
+            ],
+            "columnGroups": {
+              "default": "Übersicht",
+              "mobile": "Kurzübersicht",
+              "groups": [
+                {
+                  "name": "Übersicht",
+                  "columns": [
+                    "vorname",
+                    "name",
+                    "betreuung",
+                    "projectStatus",
+                    "dateOfBirth",
+                    "age"
+                  ]
+                },
+                {
+                  "name": "Kurzübersicht",
+                  "columns": [
+                    "vorname",
+                    "name",
+                    "projectStatus"
+                  ]
+                }
+              ]
+            },
+            "filters": [
+              {
+                "id": "projectStatus"
+              },
+              {
+                "id": "gender"
+              },
+              {
+                "id": "betreuung"
+              },
+              {
+                "id": "warteliste",
+                "true": "Auf Warteliste",
+                "false": "Bearbeitet",
+                "all": "Alle",
+                "default": "all"
+              }
+            ],
+            "entityType": "School"
+          }
+        },
+        "view:mentor/:id": {
+          "component": "EntityDetails",
+          "config": {
+            "panels": [
+              {
+                "title": "Übersicht",
+                "components": [
+                  {
+                    "title": "",
+                    "component": "Form",
+                    "config": {
+                      "fieldGroups": [
+                        {
+                          "fields": [
+                            "vorname",
+                            "name",
+                            "dateOfBirth",
+                            "gender",
+                            "organisation"
+                          ],
+                          "header": "Mentor:in"
+                        },
+                        {
+                          "fields": [
+                            "phone",
+                            "email",
+                            "address",
+                            "addressWork"
+                          ],
+                          "header": "Kontaktdaten"
+                        },
+                        {
+                          "fields": [
+                            "projectStatus",
+                            "betreuung",
+                            "admissionDate"
+                          ],
+                          "header": "Patenschaft"
+                        },
+                        {
+                          "fields": [
+                            "interessen"
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "title": "Auswahl & Vorbereitung",
+                "components": [
+                  {
+                    "title": "Auswahl & Vorbereitung",
+                    "component": "Form",
+                    "config": {
+                      "fieldGroups": [
+                        {
+                          "fields": [
+                            "fuehrungszeugnisBeantragt",
+                            "fuehrungszeugnisEingesehen",
+                            "fuehrungszeugnisGeprueftDurch"
+                          ],
+                          "header": "Führungszeugnis"
+                        },
+                        {
+                          "fields": [
+                            "projectStatus",
+                            "unterstuetzungsart",
+                            "zielgruppe"
+                          ],
+                          "header": ""
+                        },
+                        {
+                          "fields": [
+                            "auswahlDokumenteVollstaendig",
+                            "erstgesprch",
+                            "amVorbereitungsseminarTeilgenommen",
+                            "vorbereitungAbgeschlossen"
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "Auswahl (Notizen)",
+                    "component": "NotesRelatedToEntity",
+                    "config": {
+                      "columns": [
+                        {
+                          "id": "date",
+                          "visibleFrom": "xs"
+                        },
+                        {
+                          "id": "subject",
+                          "visibleFrom": "xs"
+                        },
+                        {
+                          "id": "text",
+                          "visibleFrom": "md"
+                        },
+                        {
+                          "id": "authors",
+                          "visibleFrom": "md"
+                        }
+                      ],
+                      "filter": {
+                        "category.id": "AUSWAHL",
+                        "isActive": true
+                      }
+                    }
+                  },
+                  {
+                    "title": "Vorbereitung (Workshops & Notizen)",
+                    "component": "NotesRelatedToEntity",
+                    "config": {
+                      "columns": [
+                        {
+                          "id": "date",
+                          "visibleFrom": "xs"
+                        },
+                        {
+                          "id": "subject",
+                          "visibleFrom": "xs"
+                        },
+                        {
+                          "id": "text",
+                          "visibleFrom": "md"
+                        },
+                        {
+                          "id": "authors",
+                          "visibleFrom": "md"
+                        }
+                      ],
+                      "filter": {
+                        "category.id": "VORBEREITUNG_GESPRÄCH",
+                        "isActive": true
+                      }
+                    }
+                  },
+                  {
+                    "title": "Gesprächsprotokoll Erstgespräch",
+                    "component": "Form",
+                    "config": {
+                      "fieldGroups": [
+                        {
+                          "fields": [
+                            "ansprache",
+                            "motivation",
+                            "motivationDetails",
+                            "erfahrung",
+                            "erfahrungDetails",
+                            "unterstuetzungsart",
+                            "interessen",
+                            "wuenscheCoachee",
+                            "unsicherheiten",
+                            "fragen",
+                            "bemerkungen"
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "title": "Patenschaft/en & Matching",
+                "components": [
+                  {
+                    "title": "Aktive & Frühere Patenschaften",
+                    "component": "RelatedTimePeriodEntities",
+                    "config": {
+                      "entityType": "ChildSchoolRelation",
+                      "property": "schoolId",
+                      "clickMode": "navigate",
+                      "single": false,
+                      "showInactive": true,
+                      "columns": [
+                        "start",
+                        "end",
+                        "childId"
+                      ]
+                    }
+                  },
+                  {
+                    "title": "Matching",
+                    "component": "MatchingEntities",
+                    "config": {
+                      "rightSide": {}
+                    }
+                  }
+                ]
+              },
+              {
+                "title": "Notizen & Aufgaben",
+                "components": [
+                  {
+                    "component": "NotesRelatedToEntity",
+                    "config": {
+                      "columns": [
+                        {
+                          "id": "date",
+                          "visibleFrom": "xs"
+                        },
+                        {
+                          "id": "subject",
+                          "visibleFrom": "xs"
+                        },
+                        {
+                          "id": "text",
+                          "visibleFrom": "md"
+                        },
+                        {
+                          "id": "authors",
+                          "visibleFrom": "md"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "Aufgaben",
+                    "component": "TodosRelatedToEntity"
+                  }
+                ]
+              }
+            ],
+            "entityType": "School"
+          }
+        },
+        "entity:Child": {
+          "label": "Mentee",
+          "labelPlural": "Mentees",
+          "icon": "user",
+          "route": "mentee",
+          "toStringAttributes": [
+            "vorname",
+            "name"
+          ],
+          "attributes": {
+            "betreuung": {
+              "dataType": "entity",
+              "label": "Betreut durch",
+              "additional": "User",
+              "anonymize": "retain",
+              "_isCustomizedField": true
+            },
+            "unterstuetzungsart": {
+              "_isCustomizedField": true,
+              "dataType": "configurable-enum",
+              "label": "Unterstützungsart",
+              "description": "",
+              "additional": "artDerPatenschaft",
+              "isArray": true
+            },
+            "address": {
+              "_isCustomizedField": true,
+              "dataType": "location",
+              "label": "Adresse"
+            },
+            "projectStatus": {
+              "_isCustomizedField": true,
+              "dataType": "configurable-enum",
+              "label": "Status",
+              "anonymize": "retain",
+              "additional": "mentor-status"
+            },
+            "vorbereitungAbgeschlossen": {
+              "dataType": "boolean",
+              "label": "Vorbereitung abgeschlossen",
+              "anonymize": "retain",
+              "_isCustomizedField": true
+            },
+            "phone": {
+              "dataType": "string",
+              "label": "Telefon",
+              "_isCustomizedField": true
+            },
+            "vorname": {
+              "dataType": "string",
+              "label": "Vorname",
+              "_isCustomizedField": true
+            },
+            "name": {
+              "dataType": "string",
+              "label": "Name",
+              "_isCustomizedField": true
+            },
+            "email": {
+              "dataType": "string",
+              "label": "Email",
+              "_isCustomizedField": true
+            },
+            "sorgeberechtigt": {
+              "dataType": "string",
+              "label": "Sorgeberechtigte:r",
+              "_isCustomizedField": true
+            },
+            "telSorgeberechtigt": {
+              "dataType": "string",
+              "label": "Tel. Sorgeberechtigte:r",
+              "_isCustomizedField": true
+            },
+            "emailSorgeberechtigt": {
+              "dataType": "string",
+              "label": "Email Sorgeberechtigte:r",
+              "_isCustomizedField": true
+            },
+            "admissionDate": {
+              "dataType": "date-only",
+              "label": "Dabei seit",
+              "anonymize": "retain-anonymized",
+              "_isCustomizedField": true
+            },
+            "gender": {
+              "dataType": "configurable-enum",
+              "label": "Geschlecht",
+              "anonymize": "retain",
+              "_isCustomizedField": true,
+              "additional": "genders"
+            },
+            "dateOfBirth": {
+              "dataType": "date-with-age",
+              "label": "Geburtsdatum",
+              "anonymize": "retain-anonymized",
+              "_isCustomizedField": true
+            },
+            "lebenslauf": {
+              "_isCustomizedField": true,
+              "label": "Lebenslauf",
+              "dataType": "file"
+            },
+            "interessenHobbys": {
+              "_isCustomizedField": true,
+              "label": "Interessen / Hobbys",
+              "dataType": "string"
+            },
+            "bemerkung": {
+              "_isCustomizedField": true,
+              "label": "Bemerkung",
+              "dataType": "long-text"
+            }
+          },
+          "hasPII": true
+        },
+        "view:mentee": {
+          "component": "ChildrenList",
+          "config": {
+            "columns": [
+              {
+                "label": "Alter",
+                "id": "age",
+                "additional": "dateOfBirth",
+                "viewComponent": "DisplayAge"
+              },
+              {
+                "label": "Mentor:in",
+                "id": "schoolId",
+                "additional": "School",
+                "noSorting": true,
+                "viewComponent": "DisplayEntity"
+              }
+            ],
+            "columnGroups": {
+              "default": "Übersicht",
+              "mobile": "Kurzübersicht",
+              "groups": [
+                {
+                  "name": "Übersicht",
+                  "columns": [
+                    "vorname",
+                    "name",
+                    "age",
+                    "projectStatus",
+                    "unterstuetzungsart",
+                    "betreuung",
+                    "admissionDate"
+                  ]
+                },
+                {
+                  "name": "Kurzübersicht",
+                  "columns": [
+                    "vorname",
+                    "name",
+                    "age",
+                    "status"
+                  ]
+                }
+              ]
+            },
+            "filters": [
+              {
+                "id": "projectStatus"
+              },
+              {
+                "id": "betreuung"
+              },
+              {
+                "id": "unterstuetzungsart"
+              }
+            ]
+          }
+        },
+        "view:mentee/:id": {
+          "component": "EntityDetails",
+          "config": {
+            "panels": [
+              {
+                "title": "Übersicht",
+                "components": [
+                  {
+                    "component": "Form",
+                    "config": {
+                      "fieldGroups": [
+                        {
+                          "fields": [
+                            "vorname",
+                            "name",
+                            "gender",
+                            "dateOfBirth",
+                            "interessenHobbys"
+                          ],
+                          "header": "Mentee"
+                        },
+                        {
+                          "fields": [
+                            "address",
+                            "phone",
+                            "email"
+                          ],
+                          "header": "Kontaktdaten"
+                        },
+                        {
+                          "fields": [
+                            "admissionDate",
+                            "projectStatus",
+                            "betreuung",
+                            "unterstuetzungsart",
+                            "bemerkung"
+                          ],
+                          "header": "Infos zur Patenschaft"
+                        },
+                        {
+                          "fields": [
+                            "sorgeberechtigt",
+                            "emailSorgeberechtigt",
+                            "telSorgeberechtigt"
+                          ],
+                          "header": "Sorgeberechtigte:r"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "title": "Vorbereitung",
+                "components": [
+                  {
+                    "title": "",
+                    "component": "Form",
+                    "config": {
+                      "fieldGroups": [
+                        {
+                          "fields": [
+                            "vorbereitungAbgeschlossen",
+                            "unterstuetzungsart"
+                          ],
+                          "header": "Vorbereitung"
+                        },
+                        {
+                          "fields": [
+                            "projectStatus"
+                          ]
+                        },
+                        {
+                          "fields": []
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "Notizen",
+                    "component": "NotesRelatedToEntity",
+                    "config": {
+                      "columns": [
+                        {
+                          "id": "date",
+                          "visibleFrom": "xs"
+                        },
+                        {
+                          "id": "subject",
+                          "visibleFrom": "xs"
+                        },
+                        {
+                          "id": "text",
+                          "visibleFrom": "md"
+                        },
+                        {
+                          "id": "authors",
+                          "visibleFrom": "md"
+                        }
+                      ],
+                      "filter": {
+                        "category.id": "VORBEREITUNG_GESPRÄCH",
+                        "isActive": true
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "title": "Patenschaft/en & Matching",
+                "components": [
+                  {
+                    "title": "Aktive & Frühere Patenschaften",
+                    "component": "RelatedTimePeriodEntities",
+                    "config": {
+                      "entityType": "ChildSchoolRelation",
+                      "property": "childId",
+                      "clickMode": "navigate",
+                      "single": false,
+                      "showInactive": true,
+                      "columns": [
+                        {
+                          "id": "start",
+                          "visibleFrom": "sm"
+                        },
+                        {
+                          "id": "end",
+                          "visibleFrom": "sm"
+                        },
+                        "schoolId"
+                      ]
+                    }
+                  },
+                  {
+                    "title": "Matching",
+                    "component": "MatchingEntities",
+                    "config": {
+                      "leftSide": {}
+                    }
+                  }
+                ]
+              },
+              {
+                "title": "Notizen & Aufgaben",
+                "components": [
+                  {
+                    "component": "NotesRelatedToEntity",
+                    "config": {
+                      "columns": [
+                        {
+                          "id": "date",
+                          "visibleFrom": "xs"
+                        },
+                        {
+                          "id": "subject",
+                          "visibleFrom": "xs"
+                        },
+                        {
+                          "id": "text",
+                          "visibleFrom": "md"
+                        },
+                        {
+                          "id": "authors",
+                          "visibleFrom": "md"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "Aufgaben",
+                    "component": "TodosRelatedToEntity"
+                  }
+                ]
+              }
+            ],
+            "entityType": "Child"
+          }
+        },
+        "entity:ChildSchoolRelation": {
+          "label": "Patenschaft",
+          "labelPlural": "Patenschaften",
+          "icon": "users",
+          "route": "patenschaften",
+          "toStringAttributes": [
+            "name"
+          ],
+          "attributes": {
+            "foerderungDurch": {
+              "_isCustomizedField": true,
+              "dataType": "configurable-enum",
+              "label": "gefördert durch",
+              "anonymize": "retain",
+              "additional": "foerderer"
+            },
+            "name": {
+              "dataType": "string",
+              "label": "Titel / Bezeichnung",
+              "description": "z.B. 'Patenschaft Max Mustermann - Moritz Müller'; wird in der Anwendung in Listen o.ä. angezeigt",
+              "validators": {
+                "required": true
+              },
+              "_isCustomizedField": true
+            },
+            "abschlussTyp": {
+              "dataType": "string",
+              "label": "Abschluss-Art",
+              "description": "Wähle hier eine Kategorie des Abschluss zur einfacheren Auswertung.",
+              "anonymize": "retain",
+              "_isCustomizedField": true
+            },
+            "status": {
+              "dataType": "configurable-enum",
+              "label": "Status",
+              "anonymize": "retain",
+              "additional": "patenschaft-status",
+              "_isCustomizedField": true
+            },
+            "childId": {
+              "dataType": "entity",
+              "additional": "Child",
+              "label": "Mentee",
+              "validators": {
+                "required": true
+              },
+              "anonymize": "retain",
+              "isArray": false,
+              "_isCustomizedField": true
+            },
+            "schoolId": {
+              "dataType": "entity",
+              "additional": "School",
+              "label": "Mentor:in",
+              "validators": {
+                "required": true
+              },
+              "anonymize": "retain",
+              "isArray": false,
+              "_isCustomizedField": true
+            },
+            "start": {
+              "dataType": "date-only",
+              "label": "Anfang",
+              "validators": {
+                "required": true
+              },
+              "anonymize": "retain",
+              "_isCustomizedField": true
+            },
+            "end": {
+              "dataType": "date-only",
+              "label": "Ende",
+              "anonymize": "retain",
+              "_isCustomizedField": true
+            },
+            "coachingvereinbarung": {
+              "_isCustomizedField": true,
+              "dataType": "boolean",
+              "label": "Patenschaftsvereinbarung"
+            },
+            "coachingvereinbarungDatei": {
+              "_isCustomizedField": true,
+              "dataType": "file",
+              "label": "Patenschaftsvereinbarung (Datei)"
+            },
+            "msmVereinbarung": {
+              "_isCustomizedField": true,
+              "dataType": "boolean",
+              "label": "Patenschaftsvereinbarung MsM"
+            },
+            "artDerPatenschaft": {
+              "_isCustomizedField": true,
+              "label": "Art der Patenschaft",
+              "dataType": "configurable-enum",
+              "additional": "artDerPatenschaft",
+              "isArray": true
+            }
+          },
+          "hasPII": true
+        },
+        "view:patenschaften": {
+          "component": "EntityList",
+          "config": {
+            "title": "Patenschaften",
+            "columns": [
+              "name",
+              "start",
+              "end",
+              {
+                "id": "childId",
+                "noSorting": true
+              },
+              {
+                "id": "schoolId",
+                "noSorting": true
+              },
+              "status",
+              "foerderungDurch"
+            ],
+            "filters": [
+              {
+                "id": "status"
+              },
+              {
+                "id": "artDerPatenschaft"
+              }
+            ],
+            "entityType": "ChildSchoolRelation",
+            "columnGroups": {
+              "groups": [
+                {
+                  "name": "",
+                  "columns": [
+                    "artDerPatenschaft",
+                    "name",
+                    "start",
+                    "end",
+                    "childId",
+                    "schoolId",
+                    "status"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        "view:patenschaften/:id": {
+          "component": "EntityDetails",
+          "config": {
+            "title": "Patenschaften",
+            "panels": [
+              {
+                "title": "Übersicht",
+                "components": [
+                  {
+                    "component": "Form",
+                    "config": {
+                      "fieldGroups": [
+                        {
+                          "fields": [
+                            "name",
+                            "status",
+                            "childId",
+                            "schoolId",
+                            "start",
+                            "end"
+                          ],
+                          "header": "Patenschaft"
+                        },
+                        {
+                          "fields": [
+                            "foerderungDurch",
+                            "artDerPatenschaft"
+                          ],
+                          "header": ""
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "title": "Matching",
+                "components": [
+                  {
+                    "component": "Form",
+                    "config": {
+                      "fieldGroups": [
+                        {
+                          "fields": [
+                            "name",
+                            "status",
+                            "childId",
+                            "schoolId",
+                            "start",
+                            "end"
+                          ],
+                          "header": "Patenschaft"
+                        },
+                        {
+                          "fields": [
+                            "coachingvereinbarung",
+                            "msmVereinbarung",
+                            "coachingvereinbarungDatei"
+                          ],
+                          "header": "Patenschaftsvereinbarung"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "component": "NotesRelatedToEntity",
+                    "title": "Notizen",
+                    "config": {
+                      "columns": [
+                        {
+                          "id": "date",
+                          "visibleFrom": "xs"
+                        },
+                        {
+                          "id": "subject",
+                          "visibleFrom": "xs"
+                        },
+                        {
+                          "id": "text",
+                          "visibleFrom": "md"
+                        },
+                        {
+                          "id": "authors",
+                          "visibleFrom": "md"
+                        }
+                      ],
+                      "filter": {
+                        "category.id": "MATCHING",
+                        "isActive": true
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "title": "Begleitung",
+                "components": [
+                  {
+                    "component": "Form",
+                    "config": {
+                      "fieldGroups": [
+                        {
+                          "fields": [
+                            "status"
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "component": "NotesRelatedToEntity",
+                    "title": "Notizen",
+                    "config": {
+                      "columns": [
+                        {
+                          "id": "date",
+                          "visibleFrom": "xs"
+                        },
+                        {
+                          "id": "subject",
+                          "visibleFrom": "xs"
+                        },
+                        {
+                          "id": "text",
+                          "visibleFrom": "md"
+                        },
+                        {
+                          "id": "authors",
+                          "visibleFrom": "md"
+                        }
+                      ],
+                      "filter": {
+                        "category.id": "BEGLEITUNG_GESPRÄCH",
+                        "isActive": true
+                      }
+                    }
+                  },
+                  {
+                    "title": "Aufgaben",
+                    "component": "TodosRelatedToEntity"
+                  }
+                ]
+              },
+              {
+                "title": "Abschluss",
+                "components": [
+                  {
+                    "component": "Form",
+                    "config": {
+                      "fieldGroups": [
+                        {
+                          "fields": [
+                            "end",
+                            "abschlussTyp"
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "Notizen",
+                    "component": "NotesRelatedToEntity",
+                    "config": {
+                      "columns": [
+                        {
+                          "id": "date",
+                          "visibleFrom": "xs"
+                        },
+                        {
+                          "id": "subject",
+                          "visibleFrom": "xs"
+                        },
+                        {
+                          "id": "text",
+                          "visibleFrom": "md"
+                        },
+                        {
+                          "id": "authors",
+                          "visibleFrom": "md"
+                        }
+                      ],
+                      "filter": {
+                        "category.id": "ABSCHLUSS",
+                        "isActive": true
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "title": "Notizen & Aufgaben",
+                "components": [
+                  {
+                    "title": "Notizen",
+                    "component": "NotesRelatedToEntity",
+                    "config": {
+                      "columns": [
+                        {
+                          "id": "date",
+                          "visibleFrom": "xs"
+                        },
+                        {
+                          "id": "subject",
+                          "visibleFrom": "xs"
+                        },
+                        {
+                          "id": "text",
+                          "visibleFrom": "md"
+                        },
+                        {
+                          "id": "authors",
+                          "visibleFrom": "md"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "Aufgaben",
+                    "component": "TodosRelatedToEntity"
+                  }
+                ]
+              }
+            ],
+            "entityType": "ChildSchoolRelation"
+          }
+        },
+        "entity:Note": {
+          "attributes": {
+            "children": {
+              "dataType": "entity-array",
+              "additional": "Child",
+              "label": "Mentees",
+              "editComponent": "EditAttendance"
+            },
+            "schools": {
+              "dataType": "entity-array",
+              "additional": "School",
+              "label": "Mentor:innen"
+            },
+            "relatedEntities": {
+              "dataType": "entity-array",
+              "additional": "ChildSchoolRelation",
+              "label": "Patenschaft/en"
+            },
+            "category": {
+              "dataType": "configurable-enum",
+              "innerDataType": "interaction-type",
+              "label": "Kategorie",
+              "validators": {
+                "required": true
+              }
+            }
+          }
+        },
+        "view:report": {
+          "component": "Reporting"
+        },
+        "appConfig:matching-entities": {
+          "matchActionLabel": "Pre-Match erstellen",
+          "columns": [
+            [
+              {
+                "label": "Name",
+                "id": "_id",
+                "additional": "Child",
+                "noSorting": true,
+                "viewComponent": "DisplayEntity"
+              },
+              {
+                "label": "Name",
+                "id": "_id",
+                "additional": "School",
+                "noSorting": true,
+                "viewComponent": "DisplayEntity"
+              }
+            ],
+            [
+              "gender",
+              "gender"
+            ],
+            [
+              "unterstuetzungsart",
+              "unterstuetzungsart"
+            ],
+            [
+              null,
+              "distance"
+            ]
+          ],
+          "rightSide": {
+            "entityType": "School",
+            "availableFilters": [
+              {
+                "id": "gender"
+              },
+              {
+                "id": "unterstuetzungsart"
+              }
+            ],
+            "prefilter": {
+              "$or": [
+                {
+                  "projectStatus.id": "VORBEREITUNG"
+                },
+                {
+                  "projectStatus.id": "MATCHING_BEREIT"
+                }
+              ]
+            }
+          },
+          "leftSide": {
+            "entityType": "Child",
+            "availableFilters": [
+              {
+                "id": "gender"
+              },
+              {
+                "id": "unterstuetzungsart"
+              }
+            ],
+            "prefilter": {
+              "$or": [
+                {
+                  "projectStatus.id": "VORBEREITUNG"
+                },
+                {
+                  "projectStatus.id": "MATCHING_BEREIT"
+                }
+              ]
+            }
+          },
+          "onMatch": {
+            "newEntityType": "ChildSchoolRelation",
+            "newEntityMatchPropertyLeft": "childId",
+            "newEntityMatchPropertyRight": "schoolId",
+            "columnsToReview": [
+              "name",
+              "start",
+              "childId",
+              "schoolId"
+            ]
+          }
+        },
+        "view:matching": {
+          "component": "MatchingEntities"
+        },
+        "entity:Todo": {
+          "attributes": {
+            "relatedEntities": {
+              "label": "Verknüpfte Datensätze",
+              "dataType": "entity-array",
+              "additional": [
+                "Child",
+                "School",
+                "ChildSchoolRelation"
+              ],
+              "showInDetailsView": true
+            }
+          }
+        },
+        "view:todo": {
+          "component": "TodoList",
+          "config": {
+            "entity": "Todo",
+            "columns": [
+              "deadline",
+              "subject",
+              "assignedTo",
+              "startDate",
+              "relatedEntities"
+            ],
+            "filters": [
+              {
+                "id": "assignedTo"
+              },
+              {
+                "id": "due-status",
+                "type": "prebuilt"
+              }
+            ]
           }
         }
-      ]
+      }
     },
-    "view:todo": {
-      "component": "TodoList",
-      "config": {
-        "entity": "Todo",
-        "columns": [
-          "deadline",
-          "subject",
-          "assignedTo",
-          "startDate",
-          "relatedEntities"
-        ],
-        "filters": [
+
+    {
+      "_id": "SiteSettings:global",
+      "defaultLanguage": "de",
+      "siteName": "",
+      "displayLanguageSelect": false,
+      "logo": "codo.png",
+      "favicon": "codo-icon.png",
+      "primary": "#cadbea",
+      "secondary": "#1fb6ac",
+      "error": "#eb3d00"
+    },
+
+
+
+
+    {
+      "_id": "Config:Permissions",
+      "data": {
+        "public": [
           {
-            "id": "assignedTo"
+            "subject": [
+              "Config",
+              "SiteSettings",
+              "PublicFormConfig",
+              "ConfigurableEnum"
+            ],
+            "action": "read"
           },
           {
-            "id": "due-status",
-            "type": "prebuilt"
+            "subject": [
+              "Child",
+              "School"
+            ],
+            "action": "create"
+          }
+        ],
+        "standard_user": [
+          {
+            "subject": "all",
+            "action": "manage"
+          }
+        ],
+        "admin_app": [
+          {
+            "subject": "all",
+            "action": "manage"
+          }
+        ],
+        "anonymous_reports": []
+      }
+    },
+
+
+
+
+    {
+      "_id": "Config:SetupWizard",
+      "data": {
+        "steps": [
+          {
+            "title": "Willkommen",
+            "text": "Herzlich willkommen bei codo - Dem Datentool für Mentoringprojekte!\n\ncodo ist als Software für die Arbeit und Dokumentation von Patenschafts- und Mentoringprojekten entwickelt worden.  Das Tool wurde gemeinsam von der BürgerStiftung Hamburg und der Stiftung Bürgermut zusammen mit Patenschaftskoordinator:innen entwickelt.\n\nDie folgenden Schritte leiten dich durch die wichtigsten Einstellungen, um codo optimal für dein Projekt eizurichten.\nDu kannst jederzeit den Zwischenstand der Einrichtung speichern und später über den Menüpunkt Setup Wizard zu diesem Einrichtungsassistenten zurückkehren."
+          },
+          {
+            "title": "Profile anpassen",
+            "text": "In diesem Schritt legst du fest, welche Daten von den Teilnehmenden deines Projekts in den Steckbriefen gesammelt und verarbeitet werden.\n\nDarüber hinaus kannst du die Vorlage zur Dokumentation des Patenschaftsprozesses sowie den “Patenschafts-Datensatz” bearbeiten. Der “Patenschafts-Datensatz” ist eine Übersicht über die Patenschaft. Dort siehst du alle wichtigen Informationen auf einen Blick - wie in einem Steckbrief. \n\nNeben den Steckbriefen kannst du auch einstellen, welche Daten in der jeweiligen Übersicht gezeigt werden. Lege dafür fest, welche Daten davon für euch in einer verkürzten Listenansicht als Überblick auf dem Dashboard (deinem Startbildschirm) angezeigt werden sollen.\n\nDu kannst jederzeit die Steckbriefe und Listenansichten wieder bearbeiten (umbenennen, löschen oder hinzufügen), komme dafür entweder hierher zurück oder nutze den Punkt “Datenstruktur anpassen” in deinem Menü. \n\nTipp: Weniger ist mehr. Verarbeitet nur die Daten, die ihr auch wirklich zur Durchführung des Projektes braucht!",
+            "actions": [
+              {
+                "label": "Mentee-Profile anpassen",
+                "link": "/admin/entity/Child"
+              },
+              {
+                "label": "Mentor:innen-Profile anpassen",
+                "link": "/admin/entity/School"
+              },
+              {
+                "label": "Patenschafts-Details anpassen",
+                "link": "/admin/entity/ChildSchoolRelation"
+              }
+            ]
+          },
+          {
+            "title": "Nutzer:innen hinzufügen",
+            "text": "Erstelle Accounts für weitere Nutzer:innen, damit ihr als Team in codo arbeiten könnt. \n\nDu kannst beliebig viele Profile für Kolleg:innen anlegen. Diese lassen sich dann in codo beispielsweise mit Aufgaben, Notizen oder Personen als Betreuer:in verknüpfen. Ein solches Mitarbeiter:innen-Profil muss nicht zwingend einen Login für codo bekommen. \n\nDarüber hinaus kannst du für Mitarbeiter:innen einen Nutzeraccount erstellen, mit dem sie selbst Zugriff auf codo bekommen. Dazu öffnest du das Profil der Person und versendest dort im Reiter \"Benutzer-Account\" eine Einladungsmail an die Person. Bitte gib nur den Personen Zugang, die ihn auch wirklich brauchen. Über die \"Rollen\" legst du ihre Zugriffsrechte fest. Du kannst eine oder mehrere der folgenden Rollen zuweisen:\n\n- Standard-User: Zugriff mit einfachen Sicht- und Bearbeitungsrechten (kann keine weiteren Nutzer:innen hinzufügen),\n- Account-Manager: Kann neue Nutzer:innen anlegen und verwalten (hat ansonsten keine Sicht- und Bearbeitungsrechte)\n- Admin: Voller Zugriff auf alle Daten und Funktionen inklusive Setup-Wizard (sollte nur von ein bis zwei Administrator:innen genutzt werden!)",
+            "actions": [
+              {
+                "label": "Nutzer:innen-Accounts hinzufügen",
+                "link": "/user"
+              }
+            ]
+          },
+          {
+            "title": "Daten importieren",
+            "text": "Hier kannst du jetzt (oder auch später) eure bestehenden Daten importieren.\n\nZum Hochladen eurer Daten brauchst du die Daten in einer Excel-Tabelle im \"csv.-Format\". Die Datensätze für Mentor:innen, Mentees und Patenschaften müssen jeweils in einer eigenen Excel-Tabelle hochgeladen werden.\n\nDas Import-Modul von codo hilft euch dabei, die Spaltennamen in deinen Excel-Tabellen den passenden Datenfeldern in codo zuzuordnen.\n\nDu brauchst Support? Wende dich an hallo@codo-mentoring.org oder an +49 40 87 88 969-62.",
+            "actions": [
+              {
+                "label": "Daten importieren",
+                "link": "/import"
+              }
+            ]
+          },
+          {
+            "title": "Fertig",
+            "text": "Du hast es geschafft!\n\nMache dich nun mit den Funktionen von codo vertraut. Weitere Anleitungen und Tutorials findest du unter [Notion](https://codo-daten-tool.notion.site/Dokumentation-c2a30cdc497c42adb8d6c67858f46aaf).\n\nTausche dich auch mit anderen User:innen in der codo-Community aus!\n\nViel Erfolg!"
           }
         ]
       }
+    },
+
+
+
+
+    {
+     "_id": "ConfigurableEnum:ansprache",
+     "values": [
+      {
+       "id": "",
+       "label": ""
+      },
+      {
+       "id": "DU",
+       "label": "Du"
+      },
+      {
+       "id": "SIE",
+       "label": "Sie"
+      }
+     ]
+    },
+    
+    {
+     "_id": "ConfigurableEnum:artDerPatenschaft",
+     "values": [
+      {
+       "id": "Freizeitpatenschaft",
+       "label": "Freizeit und Kultur"
+      },
+      {
+       "id": "Lernpatenschaft",
+       "label": "Bildung und Arbeit"
+      },
+      {
+       "id": "Sprachpatenschaft",
+       "label": "Lesen und Sprache"
+      },
+      {
+       "id": "Alltag und Wohnen",
+       "label": "Alltag und Wohnen"
+      },
+      {
+       "id": "Chancenpatenschaft",
+       "label": "Chancenpatenschaft"
+      }
+     ]
+    },
+    
+    {
+     "_id": "ConfigurableEnum:fhrungszeugnis",
+     "values": [
+      {
+       "id": "angefordert",
+       "label": "angefordert"
+      },
+      {
+       "id": "eingesehen",
+       "label": "eingesehen"
+      },
+      {
+       "id": "gelöscht",
+       "label": "gelöscht"
+      }
+     ]
+    },
+    
+    {
+     "_id": "ConfigurableEnum:foerderer",
+     "values": [
+      {
+       "id": "",
+       "label": "Menschen stärken Menschen"
+      }
+     ]
+    },
+    
+    {
+     "_id": "ConfigurableEnum:genders",
+     "values": [
+      {
+       "id": "F",
+       "label": "weiblich"
+      },
+      {
+       "id": "M",
+       "label": "männlich"
+      },
+      {
+       "id": "X",
+       "label": "divers"
+      }
+     ]
+    },
+    
+    {
+     "_id": "ConfigurableEnum:interaction-type",
+     "values": [
+      {
+       "id": "NOTE",
+       "label": "Notiz allgemein"
+      },
+      {
+       "id": "AUSWAHL",
+       "label": "* Auswahl Notiz"
+      },
+      {
+       "id": "VORBEREITUNG_GESPRÄCH",
+       "label": "* Vorbereitungs-Gespräch"
+      },
+      {
+       "id": "MATCHING",
+       "label": "* Matching-Gespräch"
+      },
+      {
+       "id": "BEGLEITUNG_GESPRÄCH",
+       "label": "* Begleitungs-Gespräch"
+      },
+      {
+       "id": "ABSCHLUSS",
+       "label": "* Abschluss"
+      }
+     ]
+    },
+    
+    {
+     "_id": "ConfigurableEnum:mentor-status",
+     "values": [
+      {
+       "id": "AUSWAHL",
+       "label": "im Auswahl-Prozess"
+      },
+      {
+       "id": "VORBEREITUNG",
+       "label": "im Vorbereitungs-Prozess"
+      },
+      {
+       "id": "MATCHING_BEREIT",
+       "label": "bereit für Matching/Patenschaft"
+      },
+      {
+       "id": "PATENSCHAFT",
+       "label": "in aktiver Patenschaft"
+      },
+      {
+       "id": "ALUMNI",
+       "label": "Alumni (Patenschaft abgeschlossen)"
+      },
+      {
+       "id": "ABGELEHNT",
+       "label": "Abgelehnt"
+      },
+      {
+       "id": "ON_HOLD",
+       "label": "Pausiert (aktuell noch nicht verfügbar)"
+      },
+      {
+       "id": "ZURÜCKGEZOGEN",
+       "label": "Zurückgezogen"
+      },
+      {
+       "id": "Neu",
+       "label": "Neu"
+      }
+     ]
+    },
+    
+    {
+     "_id": "ConfigurableEnum:mglicheThemenschwerpunkteEinerPatenschaft",
+     "values": [
+      {
+       "id": "Alltagsunterstützung",
+       "label": "Alltagsunterstützung"
+      },
+      {
+       "id": "Arbeitssuche",
+       "label": "Arbeitssuche"
+      },
+      {
+       "id": "Behördengänge",
+       "label": "Behördengänge"
+      },
+      {
+       "id": "Deutsch lernen",
+       "label": "Deutsch lernen"
+      },
+      {
+       "id": "Freizeit",
+       "label": "Freizeit"
+      },
+      {
+       "id": "Schulische Unterstützung",
+       "label": "Schulische Unterstützung"
+      },
+      {
+       "id": "Übergang Schule Beruf",
+       "label": "Übergang Schule Beruf"
+      },
+      {
+       "id": "Wohnungssuche",
+       "label": "Wohnungssuche"
+      },
+      {
+       "id": "Kinder und Jugend",
+       "label": "Kinder und Jugend"
+      },
+      {
+       "id": "Erwachsene",
+       "label": "Erwachsene"
+      },
+      {
+       "id": "Senioren",
+       "label": "Senioren"
+      }
+     ]
+    },
+    
+    {
+     "_id": "ConfigurableEnum:patenschaft-status",
+     "values": [
+      {
+       "id": "MATCHING_LÄUFT",
+       "label": "Pre-Match (Matching-Prozess läuft)"
+      },
+      {
+       "id": "PATENSCHAFT",
+       "label": "aktiv"
+      },
+      {
+       "id": "BEENDET",
+       "label": "beendet"
+      },
+      {
+       "id": "ABGEBROCHEN",
+       "label": "abgebrochen"
+      },
+      {
+       "id": "ALUMNI_PATENSCHAFT",
+       "label": "Alumni-Patenschaft"
+      }
+     ]
+    },
+    
+    {
+     "_id": "ConfigurableEnum:warning-levels",
+     "values": [
+      {
+       "_ordinal": 1,
+       "id": "OK",
+       "label": "Gelöst"
+      },
+      {
+       "_ordinal": 2,
+       "id": "WARNING",
+       "label": "Nachverfolgung nötig"
+      },
+      {
+       "_ordinal": 3,
+       "id": "URGENT",
+       "label": "Dringend nachverfolgen"
+      }
+     ]
+    },
+    
+    {
+     "_id": "ConfigurableEnum:zielgruppe",
+     "values": [
+      {
+       "id": "Kinder und Jugendliche",
+       "label": "Kinder"
+      },
+      {
+       "id": "Jugendliche",
+       "label": "Jugendliche"
+      },
+      {
+       "id": "junge Erwachsene",
+       "label": "junge Erwachsene"
+      },
+      {
+       "id": "Erwachsene",
+       "label": "Erwachsene"
+      },
+      {
+       "id": "Senioren",
+       "label": "Senior:innen"
+      }
+     ]
     }
-  }
+  ]
 }
