@@ -1892,7 +1892,7 @@
           },
           {
             "title": "Daten importieren",
-            "text": "Hier kannst du jetzt (oder auch später) eure bestehenden Daten importieren.\n\nZum Hochladen eurer Daten brauchst du die Daten in einer Excel-Tabelle im \"csv.-Format\". Die Datensätze für Mentor:innen, Mentees und Patenschaften müssen jeweils in einer eigenen Excel-Tabelle hochgeladen werden.\n\nDas Import-Modul von codo hilft euch dabei, die Spaltennamen in deinen Excel-Tabellen den passenden Datenfeldern in codo zuzuordnen.\n\nDu brauchst Support? Wende dich an hallo@codo-mentoring.org oder an +49 40 87 88 969-62.",
+            "text": "Hier kannst du jetzt (oder auch später) eure bestehenden Daten importieren.\n\nZum Hochladen eurer Daten brauchst du die Daten in einer Excel-Tabelle im \"csv.-Format\". Die Datensätze für Mentor:innen, Mentees und Patenschaften müssen jeweils in einer eigenen Excel-Tabelle hochgeladen werden.\n\nDas Import-Modul von codo hilft euch dabei, die Spaltennamen in deinen Excel-Tabellen den passenden Datenfeldern in codo zuzuordnen.\n\nDer Prozess wird [hier im Video gezeigt](https://drive.google.com/file/d/1SUkd9G1sNtUo3IqVhRJKhRB8G1Dh1qiC/view?usp=drive_link). Eine detaillierte Anleitung zum Speichern von Daten im \"csv.-Format\" findest du [hier als PDF](https://drive.google.com/file/d/1H52z7iuaUcRS8eTpvPxVAYDV_P7mlOL8/view?usp=drive_link).\n\n\nDu brauchst Support? Wende dich an hallo@codo-mentoring.org oder an +49 40 87 88 969-62.",
             "actions": [
               {
                 "label": "Daten importieren",
