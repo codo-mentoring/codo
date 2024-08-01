@@ -615,11 +615,6 @@
               "label": "Gefördert durch ",
               "dataType": "boolean"
             },
-            "geburtsdatum": {
-              "_isCustomizedField": true,
-              "label": "Geburtsdatum",
-              "dataType": "date-with-age"
-            },
             "zielgruppe": {
               "_isCustomizedField": true,
               "label": "Zielgruppe",
