@@ -373,7 +373,7 @@
           "label": "Mentor:in",
           "labelPlural": "Mentor:innen",
           "icon": "user",
-          "color": "#1fb6ac",
+          "color": "#facfbe",
           "route": "mentor",
           "toStringAttributes": [
             "vorname",
@@ -880,7 +880,7 @@
           "label": "Mentee",
           "labelPlural": "Mentees",
           "icon": "user",
-          "color": "#005d9c",
+          "color": "#cadbea",
           "route": "mentee",
           "toStringAttributes": [
             "vorname",
