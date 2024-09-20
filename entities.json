@@ -291,46 +291,6 @@
             ]
           }
         },
-        "view:site-settings/:id": {
-          "component": "EntityDetails",
-          "config": {
-            "entity": "SiteSettings",
-            "panels": [
-              {
-                "components": [
-                  {
-                    "component": "Form",
-                    "config": {
-                      "fieldGroups": [
-                        {
-                          "fields": [
-                            "logo",
-                            "favicon"
-                          ]
-                        },
-                        {
-                          "fields": [
-                            "siteName",
-                            "defaultLanguage",
-                            "displayLanguageSelect"
-                          ]
-                        },
-                        {
-                          "fields": [
-                            "primary",
-                            "secondary",
-                            "error",
-                            "font"
-                          ]
-                        }
-                      ]
-                    }
-                  }
-                ]
-              }
-            ]
-          }
-        },
         "view:import": {
           "component": "Import"
         },
@@ -407,10 +367,13 @@
             "markdownFile": "assets/help/help.de.md"
           }
         },
+
+
         "entity:School": {
           "label": "Mentor:in",
           "labelPlural": "Mentor:innen",
           "icon": "user",
+          "color": "#facfbe",
           "route": "mentor",
           "toStringAttributes": [
             "vorname",
@@ -614,11 +577,6 @@
               "_isCustomizedField": true,
               "label": "Gefördert durch ",
               "dataType": "boolean"
-            },
-            "geburtsdatum": {
-              "_isCustomizedField": true,
-              "label": "Geburtsdatum",
-              "dataType": "date-with-age"
             },
             "zielgruppe": {
               "_isCustomizedField": true,
@@ -916,10 +874,13 @@
             "entityType": "School"
           }
         },
+
+
         "entity:Child": {
           "label": "Mentee",
           "labelPlural": "Mentees",
           "icon": "user",
+          "color": "#cadbea",
           "route": "mentee",
           "toStringAttributes": [
             "vorname",
@@ -1071,7 +1032,7 @@
                     "vorname",
                     "name",
                     "age",
-                    "status"
+                    "projectStatus"
                   ]
                 }
               ]
@@ -1267,6 +1228,8 @@
             "entityType": "Child"
           }
         },
+
+
         "entity:ChildSchoolRelation": {
           "label": "Patenschaft",
           "labelPlural": "Patenschaften",
@@ -1640,6 +1603,8 @@
             "entityType": "ChildSchoolRelation"
           }
         },
+
+
         "entity:Note": {
           "attributes": {
             "children": {
@@ -1720,6 +1685,9 @@
                 },
                 {
                   "projectStatus.id": "MATCHING_BEREIT"
+                },
+                {
+                  "projectStatus.id": "PATENSCHAFT_MATCHING_BEREIT"
                 }
               ]
             }
@@ -1741,6 +1709,9 @@
                 },
                 {
                   "projectStatus.id": "MATCHING_BEREIT"
+                },
+                {
+                  "projectStatus.id": "PATENSCHAFT_MATCHING_BEREIT"
                 }
               ]
             }
@@ -1760,6 +1731,8 @@
         "view:matching": {
           "component": "MatchingEntities"
         },
+
+
         "entity:Todo": {
           "attributes": {
             "relatedEntities": {
@@ -1798,6 +1771,9 @@
         }
       }
     },
+    
+
+
 
     {
       "_id": "SiteSettings:global",
@@ -2032,45 +2008,59 @@
     },
     
     {
-     "_id": "ConfigurableEnum:mentor-status",
-     "values": [
-      {
-       "id": "AUSWAHL",
-       "label": "im Auswahl-Prozess"
-      },
-      {
-       "id": "VORBEREITUNG",
-       "label": "im Vorbereitungs-Prozess"
-      },
-      {
-       "id": "MATCHING_BEREIT",
-       "label": "bereit für Matching/Patenschaft"
-      },
-      {
-       "id": "PATENSCHAFT",
-       "label": "in aktiver Patenschaft"
-      },
-      {
-       "id": "ALUMNI",
-       "label": "Alumni (Patenschaft abgeschlossen)"
-      },
-      {
-       "id": "ABGELEHNT",
-       "label": "Abgelehnt"
-      },
-      {
-       "id": "ON_HOLD",
-       "label": "Pausiert (aktuell noch nicht verfügbar)"
-      },
-      {
-       "id": "ZURÜCKGEZOGEN",
-       "label": "Zurückgezogen"
-      },
-      {
-       "id": "Neu",
-       "label": "Neu"
-      }
-     ]
+      "_id": "ConfigurableEnum:mentor-status",
+      "values": [
+        {
+          "id": "NEU",
+          "label": "Neu",
+          "color": "#eeeeee"
+        },
+        {
+          "id": "WARTELISTE",
+          "label": "Warteliste",
+          "color": "#eeeeee"
+        },
+        {
+          "id": "VORBEREITUNG",
+          "label": "Auswahl und Vorbereitung",
+          "color": "#cadbea"
+        },
+        {
+          "id": "MATCHING_BEREIT",
+          "label": "Bereit für Matching",
+          "color": "#a0dfdb"
+        },
+        {
+          "id": "PATENSCHAFT",
+          "label": "in aktiver Patenschaft",
+          "color": "#1fb6ac"
+        },
+        {
+          "id": "PATENSCHAFT_MATCHING_BEREIT",
+          "label": "in aktiver Patenschaft, bereit für zus. Matching",
+          "color": "#1fb6ac"
+        },
+        {
+          "id": "ABGELEHNT",
+          "label": "Abgelehnt",
+          "color": "#facfbe"
+        },
+        {
+          "id": "ABGELEHNT_KINDERSCHUTZ",
+          "label": "Abgelehnt (Kinderschutz)",
+          "color": "#eb3d00"
+        },
+        {
+          "id": "ZURÜCKGEZOGEN",
+          "label": "Zurückgezogen",
+          "color": "#facfbe"
+        },
+        {
+          "id": "INAKTIV",
+          "label": "inaktiv (beendet oder Alumni-Patenschaften)",
+          "color": "#facfbe"
+        }
+      ]
     },
     
     {
@@ -2124,29 +2114,34 @@
     },
     
     {
-     "_id": "ConfigurableEnum:patenschaft-status",
-     "values": [
-      {
-       "id": "MATCHING_LÄUFT",
-       "label": "Pre-Match (Matching-Prozess läuft)"
-      },
-      {
-       "id": "PATENSCHAFT",
-       "label": "aktiv"
-      },
-      {
-       "id": "BEENDET",
-       "label": "beendet"
-      },
-      {
-       "id": "ABGEBROCHEN",
-       "label": "abgebrochen"
-      },
-      {
-       "id": "ALUMNI_PATENSCHAFT",
-       "label": "Alumni-Patenschaft"
-      }
-     ]
+      "_id": "ConfigurableEnum:patenschaft-status",
+      "values": [
+        {
+          "id": "MATCHING_LÄUFT",
+          "label": "Pre-Match (Matching-Prozess läuft)",
+          "color": "#a0dfdb"
+        },
+        {
+          "id": "PATENSCHAFT",
+          "label": "aktive Patenschaft",
+          "color": "#1fb6ac"
+        },
+        {
+          "id": "ABGEBROCHEN",
+          "label": "abgebrochen",
+          "color": "#eb3d00"
+        },
+        {
+          "id": "BEENDET",
+          "label": "beendet",
+          "color": "#facfbe"
+        },
+        {
+          "id": "ALUMNI_PATENSCHAFT",
+          "label": "Alumni (Patenschaft abgeschlossen)",
+          "color": "#facfbe"
+        }
+      ]
     },
     
     {
