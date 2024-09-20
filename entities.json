@@ -2012,11 +2012,13 @@
       "values": [
         {
           "id": "NEU",
-          "label": "Neu"
+          "label": "Neu",
+          "color": "#eeeeee"
         },
         {
           "id": "WARTELISTE",
-          "label": "Warteliste"
+          "label": "Warteliste",
+          "color": "#eeeeee"
         },
         {
           "id": "VORBEREITUNG",
