@@ -1735,15 +1735,79 @@
 
         "entity:Todo": {
           "attributes": {
+            "subject": {
+              "dataType": "string",
+              "label": "Betreff",
+              "showInDetailsView": true
+            },
+            "description": {
+              "dataType": "long-text",
+              "showInDetailsView": true,
+              "label": "Beschreibung"
+            },
+            "deadline": {
+              "dataType": "date-only",
+              "showInDetailsView": true,
+              "anonymize": "retain",
+              "label": "Deadline"
+            },
+            "startDate": {
+              "dataType": "date-only",
+              "description": "Zeitpunkt wann geplant ist die Bearbeitung zu beginnen, sodass Zeit bis zur tatsächlichen Deadline bleibt.",
+              "showInDetailsView": true,
+              "anonymize": "retain",
+              "label": "Anfang"
+            },
+            "assignedTo": {
+              "label": "Verantwortlich:e",
+              "dataType": "entity",
+              "isArray": true,
+              "additional": "User",
+              "showInDetailsView": true,
+              "defaultValue": {
+                "mode": "dynamic",
+                "value": "$current_user"
+              },
+              "anonymize": "retain"
+            },
             "relatedEntities": {
               "label": "Verknüpfte Datensätze",
-              "dataType": "entity-array",
+              "dataType": "entity",
               "additional": [
                 "Child",
                 "School",
                 "ChildSchoolRelation"
               ],
-              "showInDetailsView": true
+              "showInDetailsView": true,
+              "isArray": true
+            },
+            "repetitionInterval": {
+              "label": "regelmäßige Wiederholung",
+              "dataType": "time-interval",
+              "additional": [
+                {
+                  "label": "wöchentlich",
+                  "interval": {
+                    "amount": 1,
+                    "unit": "week"
+                  }
+                },
+                {
+                  "label": "monatlich",
+                  "interval": {
+                    "amount": 1,
+                    "unit": "month"
+                  }
+                }
+              ],
+              "showInDetailsView": true,
+              "anonymize": "retain"
+            },
+            "completed": {
+              "label": "erledigt",
+              "dataType": "boolean",
+              "viewComponent": "DisplayTodoCompletion",
+              "anonymize": "retain"
             }
           }
         },
