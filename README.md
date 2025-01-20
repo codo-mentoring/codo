@@ -1,3 +1,5 @@
+<div align="center"><img src="attachments/SiteSettings:global/logo.png"  width="30%"></div>
+
 # codo
 *Das Daten-Tool für Mentoringprojekte*
 
