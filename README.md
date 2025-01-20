@@ -6,7 +6,7 @@ Im dortigen Repository finden sich Source Code und technische Details: https://g
 
 Wir werden zukünftig weitere technische Dokumentation und Konfigurationen hier veröffentlichen.
 
-Allgemeine Details zum Projekt: [BürgerStiftung Hamburg > Landungsbrücken > codo](https://buergerstiftung-hamburg.de/fonds/landungsbruecken/codo/)
+Allgemeine Details zum Projekt: [codo-mentoring.org](https://codo-mentoring.org/)
 
 -----
 ## Installation des Systems
