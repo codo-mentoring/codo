@@ -11,14 +11,10 @@
               "link": "/"
             },
             {
-              "label": "Mentees",
-              "icon": "user",
-              "link": "/mentee"
+              "entityType": "Child"
             },
             {
-              "label": "Mentor:innen",
-              "icon": "user",
-              "link": "/mentor"
+              "entityType": "School"
             },
             {
               "label": "Pre-Matching",
@@ -26,19 +22,13 @@
               "link": "/matching"
             },
             {
-              "label": "Patenschaften",
-              "icon": "users",
-              "link": "/patenschaften"
+              "entityType": "ChildSchoolRelation"
             },
             {
-              "label": "Notizen",
-              "icon": "file-alt",
-              "link": "/note"
+              "entityType": "Note"
             },
             {
-              "label": "Aufgaben",
-              "icon": "tasks",
-              "link": "/todo"
+              "entityType": "Todo"
             },
             {
               "label": "Berichte",
@@ -46,9 +36,7 @@
               "link": "/report"
             },
             {
-              "label": "Mitarbeiter:innen",
-              "icon": "users-gear",
-              "link": "/user"
+              "entityType": "User"
             },
             {
               "label": "Import",
@@ -93,12 +81,12 @@
                     {
                       "label": "Öffentliches Mentee-Formular",
                       "icon": "cloud-upload-alt",
-                      "link": "/public-form/1"
+                      "link": "/public-form/form/mentee"
                     },
                     {
                       "label": "Öffentliches Mentor:innen-Formular",
                       "icon": "cloud-upload-alt",
-                      "link": "/public-form/mentor"
+                      "link": "/public-form/form/mentor"
                     }
                   ]
                 }
@@ -106,36 +94,30 @@
               {
                 "component": "EntityCountDashboard",
                 "config": {
-                  "entity": "Child",
-                  "groupBy": "projectStatus"
+                  "entityType": "Child",
+                  "groupBy": [
+                    "projectStatus",
+                    "gender"
+                  ]
                 }
               },
               {
                 "component": "EntityCountDashboard",
                 "config": {
-                  "entity": "Child",
-                  "groupBy": "gender"
+                  "entityType": "School",
+                  "groupBy": [
+                    "gender"
+                  ]
                 }
               },
               {
                 "component": "EntityCountDashboard",
                 "config": {
-                  "entity": "School",
-                  "groupBy": "gender"
-                }
-              },
-              {
-                "component": "EntityCountDashboard",
-                "config": {
-                  "entity": "ChildSchoolRelation",
-                  "groupBy": "status"
-                }
-              },
-              {
-                "component": "EntityCountDashboard",
-                "config": {
-                  "entity": "ChildSchoolRelation",
-                  "groupBy": "foerderungDurch"
+                  "entityType": "ChildSchoolRelation",
+                  "groupBy": [
+                    "status",
+                    "foerderungDurch"
+                  ]
                 }
               },
               {
@@ -2206,6 +2188,62 @@
        "label": "Senior:innen"
       }
      ]
+    },
+
+
+
+
+
+    {
+      "_id": "PublicFormConfig:mentee",
+      "title": "Mentee Test Formular",
+      "description": "Dies ist nur ein Beispiel Formular für Mentees. Interessierte können dieses Formular ausfüllen und die Daten werden danach durch die Mitarbeiter:innen eingesehen.",
+      "entity": "Child",
+      "columns": [
+        [
+          "vorname"
+        ],
+        [
+          "name"
+        ],
+        [
+          "gender"
+        ],
+        [
+          "dateOfBirth"
+        ],
+        [
+          "email"
+        ],
+        [
+          "phone"
+        ]
+      ],
+      "prefilled": {
+        "projectStatus": "NEU"
+      }
+    },
+
+    {
+      "_id": "PublicFormConfig:mentor",
+      "title": "Mentor:in Test Formular",
+      "description": "Dies ist ein Beispiel Formular für Mentor:innen. Interessierte können dieses Formular ausfüllen und die Daten werden danach durch die Mitarbeiter:innen eingesehen.",
+      "entity": "School",
+      "columns": [
+        [
+          "vorname",
+          "name"
+        ],
+        [
+          "phone",
+          "email",
+          "address",
+          "addressWork"
+        ]
+      ],
+      "prefilled": {
+        "projectStatus": "NEU"
+      }
     },
 
 
