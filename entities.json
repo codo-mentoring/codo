@@ -307,7 +307,7 @@
           }
         },
 
-        
+
         "entity:Todo": {
           "label": "Aufgabe",
           "labelPlural": "Aufgaben",
@@ -501,29 +501,81 @@
             "name"
           ],
           "attributes": {
+            "name": {
+              "dataType": "string",
+              "label": "Nachname",
+              "searchable": true
+            },
+            "vorname": {
+              "dataType": "string",
+              "label": "Vorname",
+              "searchable": true
+            },
+            "dateOfBirth": {
+              "dataType": "date-with-age",
+              "label": "Geburtsdatum",
+              "anonymize": "retain-anonymized"
+            },
+            "gender": {
+              "dataType": "configurable-enum",
+              "label": "Geschlecht",
+              "anonymize": "retain",
+              "additional": "genders"
+            },
+            "phone": {
+              "dataType": "string",
+              "label": "Rufnummer"
+            },
+            "email": {
+              "dataType": "string",
+              "label": "E-Mail"
+            },
+            "address": {
+              "dataType": "location",
+              "label": "Adresse"
+            },
+            "addressWork": {
+              "dataType": "location",
+              "label": "Adresse (Arbeitsplatz)"
+            },
+            "projectStatus": {
+              "dataType": "configurable-enum",
+              "label": "Status",
+              "additional": "mentor-status"
+            },
+            "betreuung": {
+              "dataType": "entity",
+              "label": "Betreut durch",
+              "additional": "User"
+            },
+            "admissionDate": {
+              "dataType": "date-only",
+              "label": "Dabei seit",
+              "anonymize": "retain-anonymized"
+            },
+            "ansprache": {
+              "dataType": "configurable-enum",
+              "label": "Ansprache",
+              "additional": "ansprache"
+            },
             "motivation": {
-              "_isCustomizedField": true,
               "dataType": "string",
               "label": "Motivation",
               "description": ""
             },
             "motivationDetails": {
               "dataType": "long-text",
-              "label": "Motivation (Details)",
-              "_isCustomizedField": true
+              "label": "Motivation (Details)"
             },
             "erfahrung": {
               "dataType": "boolean",
-              "label": "Erfahrung in der Arbeit mit Jugendlichen",
-              "_isCustomizedField": true
+              "label": "Erfahrung in der Arbeit mit Jugendlichen"
             },
             "erfahrungDetails": {
               "dataType": "long-text",
-              "label": "Erfahrung (Details)",
-              "_isCustomizedField": true
+              "label": "Erfahrung (Details)"
             },
             "unterstuetzungsart": {
-              "_isCustomizedField": true,
               "dataType": "configurable-enum",
               "label": "Mögliche Themenschwerpunkte einer Patenschaft",
               "labelShort": "Thema",
@@ -532,179 +584,70 @@
             },
             "interessen": {
               "dataType": "long-text",
-              "label": "Interessen, Hobbies, Freizeit",
-              "_isCustomizedField": true
+              "label": "Interessen, Hobbies, Freizeit"
             },
             "wuenscheCoachee": {
               "dataType": "long-text",
               "label": "Potentielle*r Mentee",
-              "description": "Hast du Wünsche bzgl. eines potenziellen Coachees? • Alter • Themen • Sprache • Anderes?",
-              "_isCustomizedField": true
+              "description": "Hast du Wünsche bzgl. eines potenziellen Coachees? • Alter • Themen • Sprache • Anderes?"
             },
             "unsicherheiten": {
               "dataType": "long-text",
               "label": "Ängste / Unsicherheiten",
-              "description": "Hast du Befürchtungen, Ängste oder Unsicherheiten? • Im Umgang mit Coachee • In Bezug auf Coaching (Methode / Ablauf) • Bestimmte Themen • persönliches",
-              "_isCustomizedField": true
+              "description": "Hast du Befürchtungen, Ängste oder Unsicherheiten? • Im Umgang mit Coachee • In Bezug auf Coaching (Methode / Ablauf) • Bestimmte Themen • persönliches"
             },
             "fragen": {
               "dataType": "long-text",
-              "label": "Fragen",
-              "_isCustomizedField": true
+              "label": "Fragen"
             },
             "bemerkungen": {
               "dataType": "long-text",
               "label": "Bemerkungen",
-              "description": "Alles was uns positiv oder negativ aufgefallen ist",
-              "_isCustomizedField": true
+              "description": "Alles was uns positiv oder negativ aufgefallen ist"
             },
             "fuehrungszeugnisBeantragt": {
               "dataType": "boolean",
-              "label": "beantragt",
-              "_isCustomizedField": true
+              "label": "beantragt"
             },
             "fuehrungszeugnisEingesehen": {
               "dataType": "boolean",
-              "label": "eingesehen",
-              "_isCustomizedField": true
+              "label": "eingesehen"
             },
-            "fuehrungszeugnisGeloescht": {
-              "_isCustomizedField": true,
-              "dataType": "boolean",
-              "label": "Datei gelöscht",
-              "description": "Das Dokument muss Prüfung aus Datenschutzgründen gelöscht werden"
+            "fuehrungszeugnisEingesehenAm": {
+              "label": "Eingesehen am",
+              "dataType": "date-only"
             },
             "fuehrungszeugnisGeprueftDurch": {
               "dataType": "entity",
               "additional": "User",
-              "label": "geprüft durch",
-              "_isCustomizedField": true
+              "label": "geprüft durch"
             },
             "auswahlDokumenteVollstaendig": {
               "dataType": "boolean",
-              "label": "Auswahldokumente vollständig",
-              "_isCustomizedField": true
+              "label": "Auswahldokumente vollständig"
             },
             "vorbereitungAbgeschlossen": {
               "dataType": "boolean",
-              "label": "Vorbereitung abgeschlossen",
-              "_isCustomizedField": true
-            },
-            "vorname": {
-              "dataType": "string",
-              "label": "Vorname",
-              "_isCustomizedField": true
-            },
-            "name": {
-              "dataType": "string",
-              "label": "Nachname",
-              "_isCustomizedField": true
-            },
-            "ansprache": {
-              "dataType": "configurable-enum",
-              "label": "Ansprache",
-              "_isCustomizedField": true,
-              "additional": "ansprache"
-            },
-            "betreuung": {
-              "dataType": "entity",
-              "label": "Betreut durch",
-              "additional": "User",
-              "_isCustomizedField": true
-            },
-            "address": {
-              "_isCustomizedField": true,
-              "dataType": "location",
-              "label": "Adresse"
-            },
-            "addressWork": {
-              "_isCustomizedField": true,
-              "dataType": "location",
-              "label": "Adresse (Arbeitsplatz)"
-            },
-            "projectStatus": {
-              "_isCustomizedField": true,
-              "dataType": "configurable-enum",
-              "label": "Status",
-              "additional": "mentor-status",
-              "isArray": false
-            },
-            "dateOfBirth": {
-              "dataType": "date-with-age",
-              "label": "Geburtsdatum",
-              "anonymize": "retain-anonymized",
-              "_isCustomizedField": true
-            },
-            "gender": {
-              "dataType": "configurable-enum",
-              "label": "Geschlecht",
-              "anonymize": "retain",
-              "_isCustomizedField": true,
-              "additional": "genders"
-            },
-            "phone": {
-              "_isCustomizedField": true,
-              "dataType": "string",
-              "label": "Rufnummer"
-            },
-            "email": {
-              "dataType": "string",
-              "label": "Email",
-              "_isCustomizedField": true
-            },
-            "admissionDate": {
-              "dataType": "date-only",
-              "label": "Dabei seit",
-              "anonymize": "retain-anonymized",
-              "_isCustomizedField": true
-            },
-            "gefrdertDurch": {
-              "_isCustomizedField": true,
-              "label": "gefördert durch MsM",
-              "dataType": "boolean"
-            },
-            "organisation": {
-              "_isCustomizedField": true,
-              "label": "Organisation",
-              "dataType": "string"
-            },
-            "bundesland": {
-              "_isCustomizedField": true,
-              "label": "Bundesland",
-              "dataType": "string"
-            },
-            "fhrungszeugnis": {
-              "_isCustomizedField": true,
-              "label": "Führungszeugnis",
-              "dataType": "configurable-enum",
-              "additional": "fhrungszeugnis"
-            },
-            "selbstverpflichtungserklrung": {
-              "_isCustomizedField": true,
-              "label": "Selbstverpflichtungserklärung",
-              "dataType": "boolean"
+              "label": "Vorbereitung abgeschlossen"
             },
             "amVorbereitungsseminarTeilgenommen": {
-              "_isCustomizedField": true,
               "label": "Am Vorbereitungsseminar teilgenommen",
               "dataType": "boolean"
             },
             "erstgesprch": {
-              "_isCustomizedField": true,
               "label": "Erstgespräch stattgefunden",
               "dataType": "boolean"
             },
-            "gefrdertDurchAffirmative": {
-              "_isCustomizedField": true,
-              "label": "Gefördert durch ",
-              "dataType": "boolean"
-            },
             "zielgruppe": {
-              "_isCustomizedField": true,
               "label": "Zielgruppe",
               "dataType": "configurable-enum",
               "isArray": true,
               "additional": "zielgruppe"
+            },
+            "info": {
+              "label": "Info über die Person",
+              "description": "Steckbrief",
+              "dataType": "long-text"
             }
           },
           "hasPII": true
@@ -712,6 +655,7 @@
         "view:mentor": {
           "component": "EntityList",
           "config": {
+            "entityType": "School",
             "columns": [
               {
                 "label": "Alter",
@@ -750,25 +694,15 @@
                 "id": "projectStatus"
               },
               {
-                "id": "gender"
-              },
-              {
                 "id": "betreuung"
-              },
-              {
-                "id": "warteliste",
-                "true": "Auf Warteliste",
-                "false": "Bearbeitet",
-                "all": "Alle",
-                "default": "all"
               }
-            ],
-            "entityType": "School"
+            ]
           }
         },
         "view:mentor/:id": {
           "component": "EntityDetails",
           "config": {
+            "entityType": "School",
             "panels": [
               {
                 "title": "Übersicht",
@@ -784,7 +718,7 @@
                             "name",
                             "dateOfBirth",
                             "gender",
-                            "organisation"
+                            "info"
                           ],
                           "header": "Mentor:in"
                         },
@@ -827,6 +761,7 @@
                           "fields": [
                             "fuehrungszeugnisBeantragt",
                             "fuehrungszeugnisEingesehen",
+                            "fhrungszeugnis",
                             "fuehrungszeugnisGeprueftDurch"
                           ],
                           "header": "Führungszeugnis"
@@ -991,8 +926,7 @@
                   }
                 ]
               }
-            ],
-            "entityType": "School"
+            ]
           }
         },
 
@@ -1001,35 +935,68 @@
           "label": "Mentee",
           "labelPlural": "Mentees",
           "icon": "user",
-          "color": "#cadbea",
           "route": "mentee",
+          "color": "#cadbea",
           "toStringAttributes": [
             "vorname",
             "name"
           ],
           "attributes": {
+            "name": {
+              "dataType": "string",
+              "label": "Name"
+            },
+            "vorname": {
+              "dataType": "string",
+              "label": "Vorname"
+            },
+            "dateOfBirth": {
+              "dataType": "date-with-age",
+              "label": "Geburtsdatum",
+              "anonymize": "retain-anonymized"
+            },
+            "gender": {
+              "dataType": "configurable-enum",
+              "label": "Geschlecht",
+              "anonymize": "retain",
+              "additional": "genders"
+            },
+            "admissionDate": {
+              "dataType": "date-only",
+              "label": "Dabei seit",
+              "anonymize": "retain-anonymized"
+            },
+            "address": {
+              "dataType": "location",
+              "label": "Adresse"
+            },
+            "phone": {
+              "dataType": "string",
+              "label": "Telefon (zu Hause)"
+            },
+            "email": {
+              "dataType": "string",
+              "label": "Email",
+              "searchable": true
+            },
             "betreuung": {
               "dataType": "entity",
               "label": "Betreut durch",
               "additional": "User",
-              "anonymize": "retain",
-              "_isCustomizedField": true
+              "anonymize": "retain"
             },
             "unterstuetzungsart": {
-              "_isCustomizedField": true,
               "dataType": "configurable-enum",
               "label": "Unterstützungsart",
               "description": "",
               "additional": "artDerPatenschaft",
               "isArray": true
             },
-            "address": {
-              "_isCustomizedField": true,
-              "dataType": "location",
-              "label": "Adresse"
+            "bemerkung": {
+              "label": "Bemerkung",
+              "dataType": "long-text"
             },
             "projectStatus": {
-              "_isCustomizedField": true,
               "dataType": "configurable-enum",
               "label": "Status",
               "anonymize": "retain",
@@ -1038,84 +1005,38 @@
             "vorbereitungAbgeschlossen": {
               "dataType": "boolean",
               "label": "Vorbereitung abgeschlossen",
-              "anonymize": "retain",
-              "_isCustomizedField": true
-            },
-            "phone": {
-              "dataType": "string",
-              "label": "Telefon",
-              "_isCustomizedField": true
-            },
-            "vorname": {
-              "dataType": "string",
-              "label": "Vorname",
-              "_isCustomizedField": true
-            },
-            "name": {
-              "dataType": "string",
-              "label": "Name",
-              "_isCustomizedField": true
-            },
-            "email": {
-              "dataType": "string",
-              "label": "Email",
-              "_isCustomizedField": true
+              "anonymize": "retain"
             },
             "sorgeberechtigt": {
               "dataType": "string",
-              "label": "Sorgeberechtigte:r",
-              "_isCustomizedField": true
+              "label": "Sorgeberechtigte:r"
             },
             "telSorgeberechtigt": {
               "dataType": "string",
-              "label": "Tel. Sorgeberechtigte:r",
-              "_isCustomizedField": true
+              "label": "Tel. Sorgeberechtigte:r"
             },
             "emailSorgeberechtigt": {
               "dataType": "string",
-              "label": "Email Sorgeberechtigte:r",
-              "_isCustomizedField": true
-            },
-            "admissionDate": {
-              "dataType": "date-only",
-              "label": "Dabei seit",
-              "anonymize": "retain-anonymized",
-              "_isCustomizedField": true
-            },
-            "gender": {
-              "dataType": "configurable-enum",
-              "label": "Geschlecht",
-              "anonymize": "retain",
-              "_isCustomizedField": true,
-              "additional": "genders"
-            },
-            "dateOfBirth": {
-              "dataType": "date-with-age",
-              "label": "Geburtsdatum",
-              "anonymize": "retain-anonymized",
-              "_isCustomizedField": true
-            },
-            "lebenslauf": {
-              "_isCustomizedField": true,
-              "label": "Lebenslauf",
-              "dataType": "file"
+              "label": "Email Sorgeberechtigte:r"
             },
             "interessenHobbys": {
-              "_isCustomizedField": true,
               "label": "Interessen / Hobbys",
               "dataType": "string"
             },
-            "bemerkung": {
-              "_isCustomizedField": true,
-              "label": "Bemerkung",
-              "dataType": "long-text"
+            "geschwister": {
+              "label": "Geschwister",
+              "dataType": "entity",
+              "isArray": true,
+              "additional": "Child"
             }
           },
           "hasPII": true
         },
         "view:mentee": {
-          "component": "ChildrenList",
+          "component": "EntityList",
           "config": {
+            "entityType": "Child",
+            "loaderMethod": "ChildrenService",
             "columns": [
               {
                 "label": "Alter",
@@ -1141,10 +1062,11 @@
                     "vorname",
                     "name",
                     "age",
-                    "projectStatus",
                     "unterstuetzungsart",
                     "betreuung",
-                    "admissionDate"
+                    "admissionDate",
+                    "interessenHobbys",
+                    "projectStatus"
                   ]
                 },
                 {
@@ -1160,13 +1082,13 @@
             },
             "filters": [
               {
-                "id": "projectStatus"
-              },
-              {
                 "id": "betreuung"
               },
               {
-                "id": "unterstuetzungsart"
+                "id": "projectStatus"
+              },
+              {
+                "id": "schoolId"
               }
             ]
           }
@@ -1174,6 +1096,7 @@
         "view:mentee/:id": {
           "component": "EntityDetails",
           "config": {
+            "entityType": "Child",
             "panels": [
               {
                 "title": "Übersicht",
@@ -1196,7 +1119,8 @@
                           "fields": [
                             "address",
                             "phone",
-                            "email"
+                            "email",
+                            "geschwister"
                           ],
                           "header": "Kontaktdaten"
                         },
@@ -1242,9 +1166,6 @@
                           "fields": [
                             "projectStatus"
                           ]
-                        },
-                        {
-                          "fields": []
                         }
                       ]
                     }
@@ -1345,8 +1266,7 @@
                   }
                 ]
               }
-            ],
-            "entityType": "Child"
+            ]
           }
         },
 
@@ -1360,35 +1280,13 @@
             "name"
           ],
           "attributes": {
-            "foerderungDurch": {
-              "_isCustomizedField": true,
-              "dataType": "configurable-enum",
-              "label": "gefördert durch",
-              "anonymize": "retain",
-              "additional": "foerderer"
-            },
             "name": {
               "dataType": "string",
               "label": "Titel / Bezeichnung",
               "description": "z.B. 'Patenschaft Max Mustermann - Moritz Müller'; wird in der Anwendung in Listen o.ä. angezeigt",
               "validators": {
                 "required": true
-              },
-              "_isCustomizedField": true
-            },
-            "abschlussTyp": {
-              "dataType": "string",
-              "label": "Abschluss-Art",
-              "description": "Wähle hier eine Kategorie des Abschluss zur einfacheren Auswertung.",
-              "anonymize": "retain",
-              "_isCustomizedField": true
-            },
-            "status": {
-              "dataType": "configurable-enum",
-              "label": "Status",
-              "anonymize": "retain",
-              "additional": "patenschaft-status",
-              "_isCustomizedField": true
+              }
             },
             "childId": {
               "dataType": "entity",
@@ -1397,9 +1295,7 @@
               "validators": {
                 "required": true
               },
-              "anonymize": "retain",
-              "isArray": false,
-              "_isCustomizedField": true
+              "anonymize": "retain"
             },
             "schoolId": {
               "dataType": "entity",
@@ -1408,9 +1304,7 @@
               "validators": {
                 "required": true
               },
-              "anonymize": "retain",
-              "isArray": false,
-              "_isCustomizedField": true
+              "anonymize": "retain"
             },
             "start": {
               "dataType": "date-only",
@@ -1418,36 +1312,53 @@
               "validators": {
                 "required": true
               },
-              "anonymize": "retain",
-              "_isCustomizedField": true
+              "anonymize": "retain"
             },
             "end": {
               "dataType": "date-only",
               "label": "Ende",
+              "anonymize": "retain"
+            },
+            "foerderungDurch": {
+              "dataType": "configurable-enum",
+              "label": "gefördert durch",
               "anonymize": "retain",
-              "_isCustomizedField": true
+              "additional": "foerderer"
+            },
+            "abschlussTyp": {
+              "dataType": "string",
+              "label": "Abschluss-Art",
+              "description": "Wähle hier eine Kategorie des Abschluss zur einfacheren Auswertung.",
+              "anonymize": "retain"
+            },
+            "status": {
+              "dataType": "configurable-enum",
+              "label": "Status",
+              "anonymize": "retain",
+              "additional": "patenschaft-status"
             },
             "coachingvereinbarung": {
-              "_isCustomizedField": true,
               "dataType": "boolean",
               "label": "Patenschaftsvereinbarung"
             },
             "coachingvereinbarungDatei": {
-              "_isCustomizedField": true,
               "dataType": "file",
               "label": "Patenschaftsvereinbarung (Datei)"
             },
             "msmVereinbarung": {
-              "_isCustomizedField": true,
               "dataType": "boolean",
               "label": "Patenschaftsvereinbarung MsM"
             },
             "artDerPatenschaft": {
-              "_isCustomizedField": true,
               "label": "Art der Patenschaft",
               "dataType": "configurable-enum",
               "additional": "artDerPatenschaft",
               "isArray": true
+            },
+            "zustaendig": {
+              "label": "Zuständigkeit",
+              "dataType": "entity",
+              "additional": "User"
             }
           },
           "hasPII": true
@@ -1455,7 +1366,7 @@
         "view:patenschaften": {
           "component": "EntityList",
           "config": {
-            "title": "Patenschaften",
+            "entityType": "ChildSchoolRelation",
             "columns": [
               "name",
               "start",
@@ -1471,15 +1382,6 @@
               "status",
               "foerderungDurch"
             ],
-            "filters": [
-              {
-                "id": "status"
-              },
-              {
-                "id": "artDerPatenschaft"
-              }
-            ],
-            "entityType": "ChildSchoolRelation",
             "columnGroups": {
               "groups": [
                 {
@@ -1491,17 +1393,29 @@
                     "end",
                     "childId",
                     "schoolId",
-                    "status"
+                    "status",
+                    "zustaendig"
                   ]
                 }
               ]
-            }
+            },
+            "filters": [
+              {
+                "id": "status"
+              },
+              {
+                "id": "artDerPatenschaft"
+              },
+              {
+                "id": "zustaendig"
+              }
+            ]
           }
         },
         "view:patenschaften/:id": {
           "component": "EntityDetails",
           "config": {
-            "title": "Patenschaften",
+            "entityType": "ChildSchoolRelation",
             "panels": [
               {
                 "title": "Übersicht",
@@ -1523,6 +1437,7 @@
                         },
                         {
                           "fields": [
+                            "zustaendig",
                             "foerderungDurch",
                             "artDerPatenschaft"
                           ],
@@ -1720,8 +1635,7 @@
                   }
                 ]
               }
-            ],
-            "entityType": "ChildSchoolRelation"
+            ]
           }
         },
 
