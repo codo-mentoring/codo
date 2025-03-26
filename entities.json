@@ -145,10 +145,111 @@
             9.9933974
           ]
         },
+        "view:help": {
+          "component": "MarkdownPage",
+          "config": {
+            "markdownFile": "assets/help/help.de.md"
+          }
+        },
+        "view:import": {
+          "component": "Import",
+          "permittedUserRoles": [
+            "standard_user",
+            "admin_app"
+          ]
+        },
+        "view:report": {
+          "component": "Reporting"
+        },
+
+
+        "entity:Note": {
+          "label": "Notiz",
+          "labelPlural": "Notizen",
+          "toStringAttributes": [
+            "subject"
+          ],
+          "hasPII": true,
+          "attributes": {
+            "children": {
+              "dataType": "entity",
+              "additional": "Child",
+              "label": "Mentees",
+              "editComponent": "EditAttendance",
+              "isArray": true
+            },
+            "childrenAttendance": {
+              "dataType": "event-attendance-map",
+              "anonymize": "retain"
+            },
+            "date": {
+              "label": "Datum",
+              "dataType": "date-only",
+              "defaultValue": {
+                "mode": "dynamic",
+                "value": "$now"
+              },
+              "anonymize": "retain"
+            },
+            "subject": {
+              "dataType": "string",
+              "label": "Betreff"
+            },
+            "text": {
+              "dataType": "long-text",
+              "label": "Notiztext"
+            },
+            "authors": {
+              "label": "Mitarbeiter:in",
+              "dataType": "entity",
+              "isArray": true,
+              "additional": "User",
+              "defaultValue": {
+                "mode": "dynamic",
+                "value": "$current_user"
+              },
+              "anonymize": "retain"
+            },
+            "category": {
+              "dataType": "configurable-enum",
+              "label": "Kategorie",
+              "validators": {
+                "required": true
+              },
+              "additional": "interaction-type"
+            },
+            "attachment": {
+              "label": "Datei-Anhang",
+              "dataType": "file"
+            },
+            "relatesTo": {
+              "dataType": "entity",
+              "additional": "RecurringActivity",
+              "anonymize": "retain"
+            },
+            "relatedEntities": {
+              "dataType": "entity",
+              "additional": "ChildSchoolRelation",
+              "label": "Patenschaft/en",
+              "isArray": true
+            },
+            "schools": {
+              "dataType": "entity",
+              "additional": "School",
+              "label": "Mentor:innen",
+              "isArray": true
+            },
+            "warningLevel": {
+              "label": "Status",
+              "dataType": "configurable-enum",
+              "additional": "warning-levels",
+              "anonymize": "retain"
+            }
+          }
+        },
         "view:note": {
           "component": "NotesManager",
           "config": {
-            "title": "Notizen",
             "includeEventNotes": false,
             "showEventNotesToggle": false,
             "columns": [
@@ -183,9 +284,6 @@
             },
             "filters": [
               {
-                "id": "warningLevel"
-              },
-              {
                 "id": "date"
               },
               {
@@ -194,71 +292,6 @@
               },
               {
                 "id": "authors"
-              }
-            ],
-            "exportConfig": [
-              {
-                "label": "event_id",
-                "query": "_id"
-              },
-              {
-                "label": "date",
-                "query": "date"
-              },
-              {
-                "label": "event title",
-                "query": "subject"
-              },
-              {
-                "label": "event type",
-                "query": "category"
-              },
-              {
-                "label": "event description",
-                "query": "text"
-              },
-              {
-                "query": ":getAttendanceArray(true)",
-                "subQueries": [
-                  {
-                    "query": ".participant:toEntities(Child)",
-                    "subQueries": [
-                      {
-                        "label": "participant_id",
-                        "query": "_id"
-                      },
-                      {
-                        "label": "participant",
-                        "query": "name"
-                      },
-                      {
-                        "label": "gender",
-                        "query": "gender"
-                      },
-                      {
-                        "label": "religion",
-                        "query": "religion"
-                      }
-                    ]
-                  },
-                  {
-                    "label": "status",
-                    "query": ".status._status.id"
-                  },
-                  {
-                    "query": ".school:toEntities(School)",
-                    "subQueries": [
-                      {
-                        "label": "school_name",
-                        "query": "name"
-                      },
-                      {
-                        "label": "school_id",
-                        "query": "entityId"
-                      }
-                    ]
-                  }
-                ]
               }
             ]
           }
@@ -273,9 +306,117 @@
             ]
           }
         },
-        "view:import": {
-          "component": "Import"
+
+        
+        "entity:Todo": {
+          "label": "Aufgabe",
+          "labelPlural": "Aufgaben",
+          "icon": "check",
+          "toStringAttributes": [
+            "subject"
+          ],
+          "hasPII": true,
+          "attributes": {
+            "subject": {
+              "dataType": "string",
+              "label": "Betreff",
+              "showInDetailsView": true
+            },
+            "description": {
+              "dataType": "long-text",
+              "showInDetailsView": true,
+              "label": "Beschreibung"
+            },
+            "deadline": {
+              "dataType": "date-only",
+              "showInDetailsView": true,
+              "anonymize": "retain",
+              "label": "Deadline"
+            },
+            "startDate": {
+              "dataType": "date-only",
+              "description": "Zeitpunkt wann geplant ist die Bearbeitung zu beginnen, sodass Zeit bis zur tatsächlichen Deadline bleibt.",
+              "showInDetailsView": true,
+              "anonymize": "retain",
+              "label": "Anfang"
+            },
+            "assignedTo": {
+              "label": "Verantwortlich:e",
+              "dataType": "entity",
+              "isArray": true,
+              "additional": "User",
+              "showInDetailsView": true,
+              "defaultValue": {
+                "mode": "dynamic",
+                "value": "$current_user"
+              },
+              "anonymize": "retain"
+            },
+            "relatedEntities": {
+              "label": "Verknüpfte Datensätze",
+              "dataType": "entity",
+              "additional": [
+                "Child",
+                "School",
+                "ChildSchoolRelation"
+              ],
+              "showInDetailsView": true,
+              "isArray": true
+            },
+            "repetitionInterval": {
+              "label": "regelmäßige Wiederholung",
+              "dataType": "time-interval",
+              "additional": [
+                {
+                  "label": "wöchentlich",
+                  "interval": {
+                    "amount": 1,
+                    "unit": "week"
+                  }
+                },
+                {
+                  "label": "monatlich",
+                  "interval": {
+                    "amount": 1,
+                    "unit": "month"
+                  }
+                }
+              ],
+              "showInDetailsView": true,
+              "anonymize": "retain"
+            },
+            "completed": {
+              "label": "erledigt",
+              "dataType": "",
+              "viewComponent": "DisplayTodoCompletion",
+              "anonymize": "retain"
+            }
+          }
         },
+        "view:todo": {
+          "component": "TodoList",
+          "entityType": "Todo",
+          "config": {
+            "columns": [
+              "deadline",
+              "subject",
+              "assignedTo",
+              "startDate",
+              "relatedEntities"
+            ],
+            "filters": [
+              {
+                "id": "assignedTo"
+              },
+              {
+                "id": "due-status",
+                "type": "prebuilt"
+              }
+            ]
+          }
+        },
+
+
         "entity:User": {
           "label": "Mitarbeiter:in",
           "labelPlural": "Mitarbeiter:innen",
@@ -285,14 +426,18 @@
             "name"
           ],
           "attributes": {
-            "vorname": {
-              "dataType": "string",
-              "label": "Vorname",
-              "_isCustomizedField": true
-            },
             "name": {
               "dataType": "string",
               "label": "Nachname",
+              "_isCustomizedField": true
+            },
+            "phone": {
+              "dataType": "string",
+              "label": "Contact"
+            },
+            "vorname": {
+              "dataType": "string",
+              "label": "Vorname",
               "_isCustomizedField": true
             }
           },
@@ -341,12 +486,6 @@
               }
             ],
             "entityType": "User"
-          }
-        },
-        "view:help": {
-          "component": "MarkdownPage",
-          "config": {
-            "markdownFile": "assets/help/help.de.md"
           }
         },
 
@@ -1587,37 +1726,6 @@
         },
 
 
-        "entity:Note": {
-          "attributes": {
-            "children": {
-              "dataType": "entity-array",
-              "additional": "Child",
-              "label": "Mentees",
-              "editComponent": "EditAttendance"
-            },
-            "schools": {
-              "dataType": "entity-array",
-              "additional": "School",
-              "label": "Mentor:innen"
-            },
-            "relatedEntities": {
-              "dataType": "entity-array",
-              "additional": "ChildSchoolRelation",
-              "label": "Patenschaft/en"
-            },
-            "category": {
-              "dataType": "configurable-enum",
-              "innerDataType": "interaction-type",
-              "label": "Kategorie",
-              "validators": {
-                "required": true
-              }
-            }
-          }
-        },
-        "view:report": {
-          "component": "Reporting"
-        },
         "appConfig:matching-entities": {
           "matchActionLabel": "Pre-Match erstellen",
           "columns": [
@@ -1712,44 +1820,6 @@
         },
         "view:matching": {
           "component": "MatchingEntities"
-        },
-
-
-        "entity:Todo": {
-          "attributes": {
-            "relatedEntities": {
-              "label": "Verknüpfte Datensätze",
-              "dataType": "entity-array",
-              "additional": [
-                "Child",
-                "School",
-                "ChildSchoolRelation"
-              ],
-              "showInDetailsView": true
-            }
-          }
-        },
-        "view:todo": {
-          "component": "TodoList",
-          "config": {
-            "entity": "Todo",
-            "columns": [
-              "deadline",
-              "subject",
-              "assignedTo",
-              "startDate",
-              "relatedEntities"
-            ],
-            "filters": [
-              {
-                "id": "assignedTo"
-              },
-              {
-                "id": "due-status",
-                "type": "prebuilt"
-              }
-            ]
-          }
         }
       }
     },
