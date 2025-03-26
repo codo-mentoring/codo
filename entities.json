@@ -1811,6 +1811,15 @@
             "action": "create"
           }
         ],
+        "default": [
+          {
+            "subject": [
+              "NotificationConfig",
+              "NotificationEvent"
+            ],
+            "action": "manage"
+          }
+        ],
         "standard_user": [
           {
             "subject": "all",
@@ -1823,7 +1832,15 @@
             "action": "manage"
           }
         ],
-        "anonymous_reports": []
+        "anonymous_reports": [
+          {
+            "subject": [
+              "Config",
+              "ReportConfig"
+            ],
+            "action": "read"
+          }
+        ]
       }
     },
 
@@ -2189,6 +2206,50 @@
        "label": "Senior:innen"
       }
      ]
+    },
+
+
+
+
+
+    {
+      "_id": "ReportConfig:overview",
+      "title": "Übersichts-Bericht",
+      "mode": "sql",
+      "version": 2,
+      "transformations": {
+        "startDate": [
+          "SQL_FROM_DATE"
+        ],
+        "endDate": [
+          "SQL_TO_DATE"
+        ]
+      },
+      "reportDefinition": [
+        {
+          "query": "SELECT count(*) as 'Patenschaften neu verknüpft (Start-Datum im Berichtszeitraum)' FROM ChildSchoolRelation csr WHERE csr.start BETWEEN $startDate AND $endDate"
+        },
+        {
+          "query": "SELECT count(*) as 'Patenschaften Aktiv' FROM ChildSchoolRelation csr WHERE csr.start < $endDate AND (csr.end > $startDate OR csr.end is null)"
+        },
+        {
+          "query": "SELECT count(*) as 'Mentees neu aufgenommen (\"Dabei seit\"-Datum im Berichtszeitraum)' FROM Child c WHERE c.admissionDate BETWEEN $startDate AND $endDate"
+        },
+        {
+          "groupTitle": "Mentoren erreicht",
+          "items": [
+            {
+              "query": "SELECT value as 'junge Erwachsene 20 bis 29 Jahren' FROM (SELECT count(*) as 'value', (strftime('%Y', 'now') - strftime('%Y', s.dateOfBirth)) - (strftime('%m-%d', 'now') < strftime('%m-%d', s.dateOfBirth)) AS age FROM School s WHERE age >= 20 AND age < 30)"
+            },
+            {
+              "query": "SELECT value as 'Erwachsene 30 bis 49 Jahren' FROM (SELECT count(*) as 'value', (strftime('%Y', 'now') - strftime('%Y', s.dateOfBirth)) - (strftime('%m-%d', 'now') < strftime('%m-%d', s.dateOfBirth)) AS age FROM School s WHERE age >= 30 AND age < 50)"
+            }
+          ]
+        },
+        {
+          "query": "SELECT count(*) as anzahl, status AS 'Status', foerderungDurch AS 'Förderung durch', artDerPatenschaft AS 'Art der Patenschaft' FROM ChildSchoolRelation GROUP BY status, foerderungDurch, artDerPatenschaft ORDER BY status, foerderungDurch"
+        }
+      ]
     }
   ]
 }
