@@ -2213,6 +2213,56 @@
 
 
     {
+      "_id": "Config:NotificationConfigTemplate",
+      "notificationRules": [
+        {
+          "label": "Neue Mentee registriert",
+          "notificationType": "entity_change",
+          "entityType": "Child",
+          "changeType": [
+            "created"
+          ],
+          "conditions": {},
+          "enabled": true
+        },
+        {
+          "label": "Aufgabe mir zugewiesen",
+          "notificationType": "entity_change",
+          "entityType": "Todo",
+          "changeType": [
+            "created",
+            "updated"
+          ],
+          "conditions": {
+            "assignedTo": {
+              "$elemMatch": "$current_user"
+            }
+          },
+          "enabled": true
+        },
+        {
+          "label": "Notiz mit mir veknüpft",
+          "notificationType": "entity_change",
+          "entityType": "Note",
+          "changeType": [
+            "created",
+            "updated"
+          ],
+          "conditions": {
+            "authors": {
+              "$elemMatch": "$current_user"
+            }
+          },
+          "enabled": false
+        }
+      ]
+    },
+
+
+
+
+
+    {
       "_id": "ReportConfig:overview",
       "title": "Übersichts-Bericht",
       "mode": "sql",
