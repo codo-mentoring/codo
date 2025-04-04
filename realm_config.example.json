@@ -1,7 +1,7 @@
 {
     "enabled": true,
-    "loginTheme": "aam-theme",
-    "emailTheme": "aam-theme",
+    "loginTheme": "aam-theme-codo",
+    "emailTheme": "aam-theme-codo",
     "rememberMe": true,
     "resetPasswordAllowed": true,
     "accessTokenLifespan": 300,
