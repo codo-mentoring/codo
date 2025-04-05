@@ -212,7 +212,8 @@
             },
             "category": {
               "dataType": "configurable-enum",
-              "label": "Kategorie",
+              "label": "Notiz-Typ",
+              "description": "Kategorie der Notiz. In den Tabs einer bestimmten Phase werden ggf. nur die Notizen des Typs dieser Phase angezeigt.",
               "validators": {
                 "required": true
               },
