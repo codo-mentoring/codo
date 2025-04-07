@@ -66,7 +66,7 @@
       },
       {
         "name": "no-email-2fa",
-        "description": "Users assigned to this group, will not asked for 2FA email ",
+        "description": "2-Faktor-Authentifizierung deaktiviert",
         "composite": false,
         "clientRole": false,
         "attributes": {}
