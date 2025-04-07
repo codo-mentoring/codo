@@ -38,14 +38,28 @@
     "realm": [
       {
         "name": "account_manager",
-        "description": "User with this role can create and update accounts",
+        "description": "Account-Manager: Kann neue Benutzer-Accounts anlegen und verwalten",
         "composite": false,
         "clientRole": false,
         "attributes": {}
       },
       {
         "name": "admin_app",
-        "description": "Users with this role can access everything",
+        "description": "Admin: Voller Administrations-Zugriff auf alle Funktionen, Daten und Einstellungen",
+        "composite": false,
+        "clientRole": false,
+        "attributes": {}
+      },
+      {
+        "name": "standard_user",
+        "description": "Standard-Account: Zugriff für normale Benutzer:innen",
+        "composite": false,
+        "clientRole": false,
+        "attributes": {}
+      },
+      {
+        "name": "anonymous_reports",
+        "description": "Zugriff auf Auswertungen ohne persönliche Daten (z.B. für Vorstand oder Geschäftsführung)",
         "composite": false,
         "clientRole": false,
         "attributes": {}
@@ -53,13 +67,6 @@
       {
         "name": "no-email-2fa",
         "description": "Users assigned to this group, will not asked for 2FA email ",
-        "composite": false,
-        "clientRole": false,
-        "attributes": {}
-      },
-      {
-        "name": "user_app",
-        "description": "Default rule which every user should have",
         "composite": false,
         "clientRole": false,
         "attributes": {}
@@ -844,7 +851,7 @@
       "config": {}
     }
   ],
-  "browserFlow": "browser",
+  "browserFlow": "Email 2FA",
   "clientScopes": [
     {
       "name": "email",
