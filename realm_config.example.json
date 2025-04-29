@@ -39,7 +39,15 @@
       {
         "name": "account_manager",
         "description": "Account-Manager: Kann neue Benutzer-Accounts anlegen und verwalten",
-        "composite": false,
+        "composite": true,
+        "composites": {
+          "client": {
+            "realm-management": [
+              "view-realm",
+              "manage-users"
+            ]
+          }
+        },
         "clientRole": false,
         "attributes": {}
       },
@@ -1272,6 +1280,28 @@
     {
       "name": "openid",
       "description": "",
+      "protocol": "openid-connect",
+      "attributes": {
+        "include.in.token.scope": "true",
+        "display.on.consent.screen": "true",
+        "gui.order": "",
+        "consent.screen.text": ""
+      }
+    },
+    {
+      "name": "reporting_write",
+      "description": "Access to reporting-api POST endpoints",
+      "protocol": "openid-connect",
+      "attributes": {
+        "include.in.token.scope": "true",
+        "display.on.consent.screen": "true",
+        "gui.order": "",
+        "consent.screen.text": ""
+      }
+    },
+    {
+      "name": "reporting_read",
+      "description": "Access to reporting-api GET endpoints",
       "protocol": "openid-connect",
       "attributes": {
         "include.in.token.scope": "true",
