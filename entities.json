@@ -542,7 +542,22 @@
             "projectStatus": {
               "dataType": "configurable-enum",
               "label": "Status",
-              "additional": "mentor-status"
+              "additional": "mentor-status",
+              "defaultValue": {
+                "mode": "updated-from-referencing-entity",
+                "config": {
+                  "relatedReferenceField": "schoolId",
+                  "relatedEntityType": "ChildSchoolRelation",
+                  "relatedTriggerField": "status",
+                  "automatedMapping": {
+                    "ALUMNI_PATENSCHAFT": "ALUMNI",
+                    "PATENSCHAFT": "PATENSCHAFT",
+                    "ABGEBROCHEN": "INAKTIV",
+                    "BEENDET": "INAKTIV",
+                    "MATCHING_LÄUFT": "PATENSCHAFT"
+                  }
+                }
+              }
             },
             "betreuung": {
               "dataType": "entity",
@@ -1001,7 +1016,22 @@
               "dataType": "configurable-enum",
               "label": "Status",
               "anonymize": "retain",
-              "additional": "mentor-status"
+              "additional": "mentor-status",
+              "defaultValue": {
+                "mode": "updated-from-referencing-entity",
+                "config": {
+                  "relatedReferenceField": "childId",
+                  "relatedEntityType": "ChildSchoolRelation",
+                  "relatedTriggerField": "status",
+                  "automatedMapping": {
+                    "PATENSCHAFT": "PATENSCHAFT",
+                    "ABGEBROCHEN": "INAKTIV",
+                    "BEENDET": "INAKTIV",
+                    "ALUMNI_PATENSCHAFT": "ALUMNI",
+                    "MATCHING_LÄUFT": "PATENSCHAFT"
+                  }
+                }
+              }
             },
             "vorbereitungAbgeschlossen": {
               "dataType": "boolean",
@@ -2045,8 +2075,12 @@
           "color": "#facfbe"
         },
         {
+          "id": "ALUMNI",
+          "label": "Alumni"
+        },
+        {
           "id": "INAKTIV",
-          "label": "inaktiv (beendet oder Alumni-Patenschaften)",
+          "label": "inaktiv (beendet)",
           "color": "#facfbe"
         }
       ]
