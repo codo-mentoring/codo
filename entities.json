@@ -2076,7 +2076,8 @@
         },
         {
           "id": "ALUMNI",
-          "label": "Alumni"
+          "label": "Alumni",
+          "color": "#facfbe"
         },
         {
           "id": "INAKTIV",
