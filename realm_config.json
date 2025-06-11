@@ -25,7 +25,7 @@
     "replyTo": "",
     "replyToDisplayName": "",
     "from": "<FROM_EMAIL_ADDRESS>",
-    "fromDisplayName": "<FROM_NAME>",
+    "fromDisplayName": "codo",
     "host": "<EMAIL_SERVER_HOST>",
     "port": "<EMAIL_SERVER_PORT>",
     "user": "<EMAIL_SERVER_USER>",
