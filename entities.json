@@ -1811,6 +1811,10 @@
         "default": [
           {
             "subject": [
+              "Config",
+              "SiteSettings",
+              "PublicFormConfig",
+              "ConfigurableEnum",
               "NotificationConfig",
               "NotificationEvent"
             ],
