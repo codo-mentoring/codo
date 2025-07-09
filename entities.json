@@ -2228,25 +2228,18 @@
       "title": "Mentee Test Formular",
       "description": "Dies ist nur ein Beispiel Formular für Mentees. Interessierte können dieses Formular ausfüllen und die Daten werden danach durch die Mitarbeiter:innen eingesehen.",
       "entity": "Child",
+      "route": "mentee",
       "columns": [
-        [
-          "vorname"
-        ],
-        [
-          "name"
-        ],
-        [
-          "gender"
-        ],
-        [
-          "dateOfBirth"
-        ],
-        [
-          "email"
-        ],
-        [
-          "phone"
-        ]
+        {
+          "fields": [
+            "vorname",
+            "name",
+            "gender",
+            "dateOfBirth",
+            "email",
+            "phone"
+          ]
+        }
       ],
       "prefilled": {
         "projectStatus": "NEU"
@@ -2258,17 +2251,18 @@
       "title": "Mentor:in Test Formular",
       "description": "Dies ist ein Beispiel Formular für Mentor:innen. Interessierte können dieses Formular ausfüllen und die Daten werden danach durch die Mitarbeiter:innen eingesehen.",
       "entity": "School",
+      "route": "mentor",
       "columns": [
-        [
-          "vorname",
-          "name"
-        ],
-        [
-          "phone",
-          "email",
-          "address",
-          "addressWork"
-        ]
+        {
+          "fields": [
+            "vorname",
+            "name",
+            "phone",
+            "email",
+            "address",
+            "addressWork"
+          ]
+        }
       ],
       "prefilled": {
         "projectStatus": "NEU"
