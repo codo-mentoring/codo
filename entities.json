@@ -1854,11 +1854,11 @@
         "steps": [
           {
             "title": "Willkommen",
-            "text": "Herzlich willkommen bei codo - Dem Datentool für Mentoringprojekte!\n\ncodo ist als Software für die Arbeit und Dokumentation von Patenschafts- und Mentoringprojekten entwickelt worden.  Das Tool wurde gemeinsam von der BürgerStiftung Hamburg und der Stiftung Bürgermut zusammen mit Patenschaftskoordinator:innen entwickelt.\n\nDie folgenden Schritte leiten dich durch die wichtigsten Einstellungen, um codo optimal für dein Projekt eizurichten.\nDu kannst jederzeit den Zwischenstand der Einrichtung speichern und später über den Menüpunkt Setup Wizard zu diesem Einrichtungsassistenten zurückkehren."
+            "text": "Herzlich willkommen bei codo - Dem Datentool für Mentoringprojekte!\n\ncodo wurde speziell für die Arbeit in Patenschafts- und Mentoringprojekten entwickelt - gemeinsam mit Koordinator:innen aus der Praxis. Gefördert wird codo vom Bundesministerium für Familie, Senioren, Frauen und Jugend im Rahmen des Bundesprogrammes „Menschen stärken Menschen“.\n\nWerde Teil der codo-Community, dem bundesweiten Netzwerk aktiver Nutzer:innen. [Hier findest du weitere Informationen](https://codo-daten-tool.notion.site/3-Community-42ca96a92fb248fabb39c808c8fee390) und kannst dich anmelden.\n\n\nLos geht's:\n\nDie nächsten Schritte helfen dir, codo optimal für dein Projekt einzurichten. Du kannst den Stand jederzeit speichern und später über den Menüpunkt **Setup-Assistent** weitermachen. Hier findest du auch eine [Videoanleitung zur Einrichtung](https://codo-daten-tool.notion.site/Einrichtungsassistent-4f5a938313f841bca3c4df32dcc30172)."
           },
           {
             "title": "Profile anpassen",
-            "text": "In diesem Schritt legst du fest, welche Daten von den Teilnehmenden deines Projekts in den Steckbriefen gesammelt und verarbeitet werden.\n\nDarüber hinaus kannst du die Vorlage zur Dokumentation des Patenschaftsprozesses sowie den “Patenschafts-Datensatz” bearbeiten. Der “Patenschafts-Datensatz” ist eine Übersicht über die Patenschaft. Dort siehst du alle wichtigen Informationen auf einen Blick - wie in einem Steckbrief. \n\nNeben den Steckbriefen kannst du auch einstellen, welche Daten in der jeweiligen Übersicht gezeigt werden. Lege dafür fest, welche Daten davon für euch in einer verkürzten Listenansicht als Überblick auf dem Dashboard (deinem Startbildschirm) angezeigt werden sollen.\n\nDu kannst jederzeit die Steckbriefe und Listenansichten wieder bearbeiten (umbenennen, löschen oder hinzufügen), komme dafür entweder hierher zurück oder nutze den Punkt “Datenstruktur anpassen” in deinem Menü. \n\nTipp: Weniger ist mehr. Verarbeitet nur die Daten, die ihr auch wirklich zur Durchführung des Projektes braucht!",
+            "text": "In diesem Schritt legst du fest, welche Informationen du in den Steckbriefen deiner Mentees und Mentor:innen erfassen möchtest. Außerdem kannst du hier die Vorlage zur Dokumentation des Patenschaftsprozesses anpassen.\n\nDu kannst jeweils:\n\n- Die Detailansicht eines Datensatzes anpassen (Einzelansicht eines Datensatzes)\n- Die Listenansicht anpassen (die kompakte Übersicht mit allen wichtigen Infos zu allen Mentees, Mentor:innen und Patenschaften)\n\nDas öffentliche Formular zur digitalen Erfassung von Daten kannst du ebenfalls hier einrichten.\n\nTipp: Weniger ist mehr. Verarbeite nur die Daten, die du auch wirklich zur Durchführung des Projektes brauchst!",
             "actions": [
               {
                 "label": "Mentee-Profile anpassen",
@@ -1871,12 +1871,16 @@
               {
                 "label": "Patenschafts-Details anpassen",
                 "link": "/admin/entity/ChildSchoolRelation"
+              },
+              {
+                "label": "Öffentliche Formulare einrichten",
+                "link": "/admin/public-form"
               }
             ]
           },
           {
             "title": "Nutzer:innen hinzufügen",
-            "text": "Erstelle Accounts für weitere Nutzer:innen, damit ihr als Team in codo arbeiten könnt. \n\nDu kannst beliebig viele Profile für Kolleg:innen anlegen. Diese lassen sich dann in codo beispielsweise mit Aufgaben, Notizen oder Personen als Betreuer:in verknüpfen. Ein solches Mitarbeiter:innen-Profil muss nicht zwingend einen Login für codo bekommen. \n\nDarüber hinaus kannst du für Mitarbeiter:innen einen Nutzeraccount erstellen, mit dem sie selbst Zugriff auf codo bekommen. Dazu öffnest du das Profil der Person und versendest dort im Reiter \"Benutzer-Account\" eine Einladungsmail an die Person. Bitte gib nur den Personen Zugang, die ihn auch wirklich brauchen. Über die \"Rollen\" legst du ihre Zugriffsrechte fest. Du kannst eine oder mehrere der folgenden Rollen zuweisen:\n\n- Standard-User: Zugriff mit einfachen Sicht- und Bearbeitungsrechten (kann keine weiteren Nutzer:innen hinzufügen),\n- Account-Manager: Kann neue Nutzer:innen anlegen und verwalten (hat ansonsten keine Sicht- und Bearbeitungsrechte)\n- Admin: Voller Zugriff auf alle Daten und Funktionen inklusive Setup-Wizard (sollte nur von ein bis zwei Administrator:innen genutzt werden!)",
+            "text": "Mit diesen simplen Schritten erstellst du neue Nutzer:innen-Accounts für deine:n Kolleg:in. [Hier findest du auch eine Video-Anleitung](https://codo-daten-tool.notion.site/Mitarbeiter-innen-Account-anlegen-fd142c2398dd402ead283d3c734cae61).\n\nDie Mitarbeiter:innen bekommen per E-Mail ihre Zugangsdaten. Bitte gib nur den Personen Zugang, die ihn auch wirklich brauchen. Über die „Rollen“ legst du ihre Zugriffsrechte fest. Du kannst eine oder mehrere der folgenden Rollen zuweisen:\n\n- Standard-User: Zugriff mit einfachen Sicht- und Bearbeitungsrechten (kann keine weiteren Nutzer:innen hinzufügen),\n- Account-Manager: Kann neue Nutzer:innen anlegen und verwalten (hat ansonsten keine Sicht- und Bearbeitungsrechte)\n- Admin: Voller Zugriff auf alle Daten und Funktionen inklusive Setup-Wizard (sollte nur von ein bis zwei Administrator:innen genutzt werden!)",
             "actions": [
               {
                 "label": "Nutzer:innen-Accounts hinzufügen",
@@ -1896,7 +1900,7 @@
           },
           {
             "title": "Fertig",
-            "text": "Du hast es geschafft!\n\nMache dich nun mit den Funktionen von codo vertraut. Weitere Anleitungen und Tutorials findest du unter [Notion](https://codo-daten-tool.notion.site/Dokumentation-c2a30cdc497c42adb8d6c67858f46aaf).\n\nTausche dich auch mit anderen User:innen in der codo-Community aus!\n\nViel Erfolg!"
+            "text": "Du hast es geschafft!\n\nMache dich nun mit den Funktionen von codo vertraut. Weitere Anleitungen und Tutorials findest du unter [Notion](https://codo-daten-tool.notion.site/Dokumentation-c2a30cdc497c42adb8d6c67858f46aaf).\n\nTausche dich auch mit anderen Nutzer:innen in der codo-Community aus!\n\nViel Erfolg!"
           }
         ],
         "openOnStart": true
