@@ -31,5 +31,5 @@ wie hier beschrieben: https://github.com/Aam-Digital/ndb-setup/
 1. Aufrufen des Datenbank-Managers "Fauxton": https://<system-url>/db/couchdb/_utils/#
 2. Einloggen mit "admin" User und dem während des Setup generierten Passworts (zu finden in der .env Datei auf dem Server)
 3. Erstellen eines neuen Dokuments in der "app" Datenbank
-4. Kopieren des codo Config files [codo-default-config.json](./entities.json) als Basis-Konfiguration.
+4. Kopieren des codo Config files [codo-default-config.json](assets/base-configs/codo/entities.json) als Basis-Konfiguration.
 5. ggf. weitere Anpassung der Konfiguration
