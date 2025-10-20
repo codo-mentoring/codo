@@ -1,0 +1,11 @@
+[
+  {
+    "id": "codo",
+    "name": "codo - Das Daten-Tool für Mentoringprojekte",
+    "description": "Mit der Open Source Web-App codo hast du alle Daten deines Mentoringprojekts an einem zentralen Ort. Von Kontakten bis hin zu Aufgaben, codo macht die Koordination und Dokumentation spielend leicht.",
+    "entitiesToImport": [
+      "codo/entities.json"
+    ],
+    "locale": "de"
+  }
+]
