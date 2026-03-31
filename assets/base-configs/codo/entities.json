@@ -1756,7 +1756,8 @@
   {
     "_id": "SiteSettings:global",
     "defaultLanguage": "de",
-    "siteName": "",
+    "siteName": "codo",
+    "hideSiteNameInToolbar": true,
     "displayLanguageSelect": false,
     "logo": "codo.png",
     "favicon": "codo-icon.png",
