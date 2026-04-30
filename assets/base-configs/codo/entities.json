@@ -1759,8 +1759,7 @@
     "siteName": "codo",
     "hideSiteNameInToolbar": true,
     "displayLanguageSelect": false,
-    "logo": "codo.png",
-    "favicon": "codo-icon.png",
+    "logo": "https://raw.githubusercontent.com/codo-mentoring/codo/main/logo.png",
     "primary": "#cadbea",
     "secondary": "#1fb6ac",
     "error": "#eb3d00"
