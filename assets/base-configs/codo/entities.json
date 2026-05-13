@@ -24,6 +24,9 @@
             "entityType": "ChildSchoolRelation"
           },
           {
+            "entityType": "event"
+          },
+          {
             "entityType": "Note"
           },
           {
@@ -43,11 +46,6 @@
             "link": "/import"
           },
           {
-            "label": "Admin",
-            "icon": "wrench",
-            "link": "/admin"
-          },
-          {
             "label": "Hilfe",
             "icon": "question",
             "link": "/help"
@@ -59,7 +57,7 @@
         "config": {
           "widgets": [
             {
-              "component": "DashboardShortcutWidget",
+              "component": "ShortcutDashboard",
               "config": {
                 "shortcuts": [
                   {
@@ -93,18 +91,19 @@
             {
               "component": "EntityCountDashboard",
               "config": {
-                "entityType": "Child",
+                "entityType": "School",
                 "groupBy": [
-                  "projectStatus",
-                  "gender"
+                  "gender",
+                  "projectStatus"
                 ]
               }
             },
             {
               "component": "EntityCountDashboard",
               "config": {
-                "entityType": "School",
+                "entityType": "Child",
                 "groupBy": [
+                  "projectStatus",
                   "gender"
                 ]
               }
@@ -120,7 +119,8 @@
               }
             },
             {
-              "component": "TodosDashboard"
+              "component": "TodosDashboard",
+              "config": {}
             },
             {
               "component": "BirthdayDashboard",
@@ -163,6 +163,7 @@
       "entity:Note": {
         "label": "Notiz",
         "labelPlural": "Notizen",
+        "icon": "file-alt",
         "toStringAttributes": [
           "subject"
         ],
@@ -172,19 +173,16 @@
             "dataType": "entity",
             "additional": "Child",
             "label": "Mentees",
-            "editComponent": "EditAttendance",
             "isArray": true
-          },
-          "childrenAttendance": {
-            "dataType": "event-attendance-map",
-            "anonymize": "retain"
           },
           "date": {
             "label": "Datum",
             "dataType": "date-only",
             "defaultValue": {
               "mode": "dynamic",
-              "value": "$now"
+              "config": {
+                "value": "$now"
+              }
             },
             "anonymize": "retain"
           },
@@ -203,7 +201,9 @@
             "additional": "User",
             "defaultValue": {
               "mode": "dynamic",
-              "value": "$current_user"
+              "config": {
+                "value": "$current_user"
+              }
             },
             "anonymize": "retain"
           },
@@ -227,9 +227,12 @@
           },
           "relatedEntities": {
             "dataType": "entity",
-            "additional": "ChildSchoolRelation",
-            "label": "Patenschaft/en",
-            "isArray": true
+            "label": "Sonstige verknüpfte Datensätze",
+            "isArray": true,
+            "additional": [
+              "ChildSchoolRelation",
+              "event"
+            ]
           },
           "schools": {
             "dataType": "entity",
@@ -301,6 +304,17 @@
             "children",
             "schools",
             "relatedEntities"
+          ],
+          "topForm": [
+            "date",
+            "warningLevel",
+            "category",
+            "authors",
+            "attachment"
+          ],
+          "middleForm": [
+            "subject",
+            "text"
           ]
         }
       },
@@ -344,7 +358,9 @@
             "showInDetailsView": true,
             "defaultValue": {
               "mode": "dynamic",
-              "value": "$current_user"
+              "config": {
+                "value": "$current_user"
+              }
             },
             "anonymize": "retain"
           },
@@ -354,7 +370,8 @@
             "additional": [
               "Child",
               "School",
-              "ChildSchoolRelation"
+              "ChildSchoolRelation",
+              "event"
             ],
             "showInDetailsView": true,
             "isArray": true
@@ -385,30 +402,9 @@
             "label": "erledigt",
             "dataType": "",
             "viewComponent": "DisplayTodoCompletion",
+            "editComponent": "EditTodoCompletion",
             "anonymize": "retain"
           }
-        }
-      },
-      "view:todo": {
-        "component": "TodoList",
-        "entityType": "Todo",
-        "config": {
-          "columns": [
-            "deadline",
-            "subject",
-            "assignedTo",
-            "startDate",
-            "relatedEntities"
-          ],
-          "filters": [
-            {
-              "id": "assignedTo"
-            },
-            {
-              "id": "due-status",
-              "type": "prebuilt"
-            }
-          ]
         }
       },
       "entity:User": {
@@ -422,8 +418,7 @@
         "attributes": {
           "name": {
             "dataType": "string",
-            "label": "Nachname",
-            "_isCustomizedField": true
+            "label": "Nachname"
           },
           "phone": {
             "dataType": "string",
@@ -432,10 +427,11 @@
           "vorname": {
             "dataType": "string",
             "label": "Vorname",
-            "_isCustomizedField": true
+            "id": "vorname"
           }
         },
-        "hasPII": true
+        "hasPII": true,
+        "enableUserAccounts": true
       },
       "view:user": {
         "component": "EntityList",
@@ -467,14 +463,6 @@
                       }
                     ]
                   }
-                }
-              ]
-            },
-            {
-              "title": "Benutzer-Account",
-              "components": [
-                {
-                  "component": "UserSecurity"
                 }
               ]
             }
@@ -519,7 +507,7 @@
             "label": "Rufnummer"
           },
           "email": {
-            "dataType": "string",
+            "dataType": "email",
             "label": "E-Mail"
           },
           "address": {
@@ -531,16 +519,16 @@
             "label": "Adresse (Arbeitsplatz)"
           },
           "projectStatus": {
-            "dataType": "configurable-enum",
             "label": "Status",
+            "dataType": "configurable-enum",
             "additional": "mentor-status",
             "defaultValue": {
-              "mode": "updated-from-referencing-entity",
+              "mode": "inherited-field",
               "config": {
-                "relatedReferenceField": "schoolId",
-                "relatedEntityType": "ChildSchoolRelation",
-                "relatedTriggerField": "status",
-                "automatedMapping": {
+                "sourceReferenceEntity": "ChildSchoolRelation",
+                "sourceReferenceField": "schoolId",
+                "sourceValueField": "status",
+                "valueMapping": {
                   "ALUMNI_PATENSCHAFT": "ALUMNI",
                   "PATENSCHAFT": "PATENSCHAFT",
                   "ABGEBROCHEN": "INAKTIV",
@@ -548,7 +536,8 @@
                   "MATCHING_LÄUFT": "PATENSCHAFT"
                 }
               }
-            }
+            },
+            "editComponent": "EditConfigurableEnum"
           },
           "betreuung": {
             "dataType": "entity",
@@ -768,7 +757,7 @@
                         "fields": [
                           "fuehrungszeugnisBeantragt",
                           "fuehrungszeugnisEingesehen",
-                          "fhrungszeugnis",
+                          "fuehrungszeugnisEingesehenAm",
                           "fuehrungszeugnisGeprueftDurch"
                         ],
                         "header": "Führungszeugnis"
@@ -817,7 +806,8 @@
                     "filter": {
                       "category.id": "AUSWAHL",
                       "isActive": true
-                    }
+                    },
+                    "entityType": "Note"
                   }
                 },
                 {
@@ -845,7 +835,8 @@
                     "filter": {
                       "category.id": "VORBEREITUNG_GESPRÄCH",
                       "isActive": true
-                    }
+                    },
+                    "entityType": "Note"
                   }
                 },
                 {
@@ -924,12 +915,64 @@
                         "id": "authors",
                         "visibleFrom": "md"
                       }
-                    ]
+                    ],
+                    "entityType": "Note"
                   }
                 },
                 {
                   "title": "Aufgaben",
-                  "component": "TodosRelatedToEntity"
+                  "component": "TodosRelatedToEntity",
+                  "config": {
+                    "entityType": "Todo",
+                    "columns": [
+                      {
+                        "id": "deadline"
+                      },
+                      {
+                        "id": "subject"
+                      },
+                      {
+                        "id": "startDate"
+                      },
+                      {
+                        "id": "assignedTo"
+                      },
+                      {
+                        "id": "description",
+                        "visibleFrom": "xl"
+                      },
+                      {
+                        "id": "repetitionInterval",
+                        "visibleFrom": "xl"
+                      },
+                      {
+                        "id": "relatedEntities",
+                        "hideFromTable": true
+                      },
+                      {
+                        "id": "completed",
+                        "hideFromForm": true
+                      }
+                    ]
+                  }
+                },
+                {
+                  "title": "Veranstaltungen",
+                  "component": "RelatedEntities",
+                  "config": {
+                    "entityType": "event",
+                    "columns": [
+                      {
+                        "id": "date"
+                      },
+                      {
+                        "id": "name"
+                      },
+                      {
+                        "id": "verantwortliche"
+                      }
+                    ]
+                  }
                 }
               ]
             }
@@ -980,8 +1023,8 @@
             "label": "Telefon (zu Hause)"
           },
           "email": {
-            "dataType": "string",
             "label": "Email",
+            "dataType": "email",
             "searchable": true
           },
           "betreuung": {
@@ -1002,17 +1045,17 @@
             "dataType": "long-text"
           },
           "projectStatus": {
-            "dataType": "configurable-enum",
             "label": "Status",
+            "dataType": "configurable-enum",
             "anonymize": "retain",
             "additional": "mentor-status",
             "defaultValue": {
-              "mode": "updated-from-referencing-entity",
+              "mode": "inherited-field",
               "config": {
-                "relatedReferenceField": "childId",
-                "relatedEntityType": "ChildSchoolRelation",
-                "relatedTriggerField": "status",
-                "automatedMapping": {
+                "sourceReferenceEntity": "ChildSchoolRelation",
+                "sourceReferenceField": "childId",
+                "sourceValueField": "status",
+                "valueMapping": {
                   "PATENSCHAFT": "PATENSCHAFT",
                   "ABGEBROCHEN": "INAKTIV",
                   "BEENDET": "INAKTIV",
@@ -1041,7 +1084,7 @@
           },
           "interessenHobbys": {
             "label": "Interessen / Hobbys",
-            "dataType": "string"
+            "dataType": "long-text"
           },
           "geschwister": {
             "label": "Geschwister",
@@ -1102,13 +1145,13 @@
           },
           "filters": [
             {
+              "id": "dateOfBirth"
+            },
+            {
               "id": "betreuung"
             },
             {
               "id": "projectStatus"
-            },
-            {
-              "id": "schoolId"
             }
           ]
         }
@@ -1215,7 +1258,8 @@
                     "filter": {
                       "category.id": "VORBEREITUNG_GESPRÄCH",
                       "isActive": true
-                    }
+                    },
+                    "entityType": "Note"
                   }
                 }
               ]
@@ -1277,12 +1321,64 @@
                         "id": "authors",
                         "visibleFrom": "md"
                       }
-                    ]
+                    ],
+                    "entityType": "Note"
                   }
                 },
                 {
                   "title": "Aufgaben",
-                  "component": "TodosRelatedToEntity"
+                  "component": "TodosRelatedToEntity",
+                  "config": {
+                    "entityType": "Todo",
+                    "columns": [
+                      {
+                        "id": "deadline"
+                      },
+                      {
+                        "id": "subject"
+                      },
+                      {
+                        "id": "startDate"
+                      },
+                      {
+                        "id": "assignedTo"
+                      },
+                      {
+                        "id": "description",
+                        "visibleFrom": "xl"
+                      },
+                      {
+                        "id": "repetitionInterval",
+                        "visibleFrom": "xl"
+                      },
+                      {
+                        "id": "relatedEntities",
+                        "hideFromTable": true
+                      },
+                      {
+                        "id": "completed",
+                        "hideFromForm": true
+                      }
+                    ]
+                  }
+                },
+                {
+                  "title": "Veranstaltungen",
+                  "component": "RelatedEntities",
+                  "config": {
+                    "entityType": "event",
+                    "columns": [
+                      {
+                        "id": "date"
+                      },
+                      {
+                        "id": "name"
+                      },
+                      {
+                        "id": "verantwortliche"
+                      }
+                    ]
+                  }
                 }
               ]
             }
@@ -1353,11 +1449,17 @@
             "dataType": "configurable-enum",
             "label": "Status",
             "anonymize": "retain",
-            "additional": "patenschaft-status"
+            "additional": "patenschaft-status",
+            "defaultValue": {
+              "mode": "static",
+              "config": {
+                "value": "MATCHING_LÄUFT"
+              }
+            }
           },
           "coachingvereinbarung": {
-            "dataType": "boolean",
-            "label": "Patenschaftsvereinbarung"
+            "dataType": "date-only",
+            "label": "Patenschaftsvereinbarung vom"
           },
           "coachingvereinbarungDatei": {
             "dataType": "file",
@@ -1405,14 +1507,12 @@
               {
                 "name": "",
                 "columns": [
-                  "artDerPatenschaft",
                   "name",
-                  "start",
-                  "end",
                   "childId",
                   "schoolId",
-                  "status",
-                  "zustaendig"
+                  "start",
+                  "end",
+                  "status"
                 ]
               }
             ]
@@ -1422,7 +1522,7 @@
               "id": "status"
             },
             {
-              "id": "artDerPatenschaft"
+              "id": "foerderungDurch"
             },
             {
               "id": "zustaendig"
@@ -1487,7 +1587,6 @@
                       {
                         "fields": [
                           "coachingvereinbarung",
-                          "msmVereinbarung",
                           "coachingvereinbarungDatei"
                         ],
                         "header": "Patenschaftsvereinbarung"
@@ -1520,7 +1619,8 @@
                     "filter": {
                       "category.id": "MATCHING",
                       "isActive": true
-                    }
+                    },
+                    "entityType": "Note"
                   }
                 }
               ]
@@ -1565,12 +1665,46 @@
                     "filter": {
                       "category.id": "BEGLEITUNG_GESPRÄCH",
                       "isActive": true
-                    }
+                    },
+                    "entityType": "Note"
                   }
                 },
                 {
                   "title": "Aufgaben",
-                  "component": "TodosRelatedToEntity"
+                  "component": "TodosRelatedToEntity",
+                  "config": {
+                    "entityType": "Todo",
+                    "columns": [
+                      {
+                        "id": "deadline"
+                      },
+                      {
+                        "id": "subject"
+                      },
+                      {
+                        "id": "startDate"
+                      },
+                      {
+                        "id": "assignedTo"
+                      },
+                      {
+                        "id": "description",
+                        "visibleFrom": "xl"
+                      },
+                      {
+                        "id": "repetitionInterval",
+                        "visibleFrom": "xl"
+                      },
+                      {
+                        "id": "relatedEntities",
+                        "hideFromTable": true
+                      },
+                      {
+                        "id": "completed",
+                        "hideFromForm": true
+                      }
+                    ]
+                  }
                 }
               ]
             },
@@ -1615,7 +1749,8 @@
                     "filter": {
                       "category.id": "ABSCHLUSS",
                       "isActive": true
-                    }
+                    },
+                    "entityType": "Note"
                   }
                 }
               ]
@@ -1644,12 +1779,46 @@
                         "id": "authors",
                         "visibleFrom": "md"
                       }
-                    ]
+                    ],
+                    "entityType": "Note"
                   }
                 },
                 {
                   "title": "Aufgaben",
-                  "component": "TodosRelatedToEntity"
+                  "component": "TodosRelatedToEntity",
+                  "config": {
+                    "entityType": "Todo",
+                    "columns": [
+                      {
+                        "id": "deadline"
+                      },
+                      {
+                        "id": "subject"
+                      },
+                      {
+                        "id": "startDate"
+                      },
+                      {
+                        "id": "assignedTo"
+                      },
+                      {
+                        "id": "description",
+                        "visibleFrom": "xl"
+                      },
+                      {
+                        "id": "repetitionInterval",
+                        "visibleFrom": "xl"
+                      },
+                      {
+                        "id": "relatedEntities",
+                        "hideFromTable": true
+                      },
+                      {
+                        "id": "completed",
+                        "hideFromForm": true
+                      }
+                    ]
+                  }
                 }
               ]
             }
@@ -1701,9 +1870,6 @@
           "prefilter": {
             "$or": [
               {
-                "projectStatus.id": "VORBEREITUNG"
-              },
-              {
                 "projectStatus.id": "MATCHING_BEREIT"
               },
               {
@@ -1720,18 +1886,24 @@
             },
             {
               "id": "unterstuetzungsart"
+            },
+            {
+              "id": "betreuung"
+            },
+            {
+              "id": "admissionDate"
             }
           ],
           "prefilter": {
             "$or": [
               {
-                "projectStatus.id": "VORBEREITUNG"
-              },
-              {
                 "projectStatus.id": "MATCHING_BEREIT"
               },
               {
                 "projectStatus.id": "PATENSCHAFT_MATCHING_BEREIT"
+              },
+              {
+                "projectStatus.id": "PATENSCHAFT"
               }
             ]
           }
@@ -1742,14 +1914,188 @@
           "newEntityMatchPropertyRight": "schoolId",
           "columnsToReview": [
             "name",
-            "start",
             "childId",
-            "schoolId"
+            "schoolId",
+            "start",
+            "end",
+            "status"
           ]
         }
       },
       "view:matching": {
         "component": "MatchingEntities"
+      },
+      "entity:event": {
+        "label": "Veranstaltung",
+        "route": "event",
+        "attributes": {
+          "name": {
+            "id": "name",
+            "searchable": false,
+            "label": "Titel",
+            "dataType": "string"
+          },
+          "date": {
+            "id": "date",
+            "searchable": false,
+            "label": "Datum",
+            "dataType": "date-only"
+          },
+          "teilnehmer_innen": {
+            "id": "teilnehmer_innen",
+            "searchable": false,
+            "label": "Teilnehmer:innen",
+            "dataType": "attendance",
+            "additional": {
+              "participant": {
+                "dataType": "entity",
+                "additional": [
+                  "User",
+                  "School",
+                  "Child"
+                ]
+              }
+            },
+            "isArray": true
+          },
+          "anmerkungen": {
+            "id": "anmerkungen",
+            "searchable": false,
+            "label": "Anmerkungen / Agenda",
+            "dataType": "long-text"
+          },
+          "verantwortliche": {
+            "id": "verantwortliche",
+            "searchable": false,
+            "label": "Verantwortliche",
+            "dataType": "entity",
+            "additional": "User",
+            "isArray": true
+          },
+          "artDerVeranstaltung": {
+            "id": "artDerVeranstaltung",
+            "searchable": false,
+            "label": "Art der Veranstaltung",
+            "dataType": "configurable-enum",
+            "additional": "artDerVeranstaltung"
+          }
+        },
+        "labelPlural": "Veranstaltungen",
+        "icon": "calendar",
+        "toStringAttributes": [
+          "name"
+        ],
+        "hasPII": false
+      },
+      "view:event/:id": {
+        "component": "EntityDetails",
+        "config": {
+          "entityType": "event",
+          "panels": [
+            {
+              "title": "Veranstaltung",
+              "components": [
+                {
+                  "title": "",
+                  "component": "Form",
+                  "config": {
+                    "fieldGroups": [
+                      {
+                        "fields": [
+                          "name",
+                          "date",
+                          "artDerVeranstaltung",
+                          "teilnehmer_innen",
+                          "anmerkungen",
+                          "verantwortliche"
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "title": "Notizen & Aufgaben",
+              "components": [
+                {
+                  "title": "",
+                  "component": "NotesRelatedToEntity",
+                  "config": {
+                    "entityType": "Note",
+                    "columns": [
+                      {
+                        "id": "date"
+                      },
+                      {
+                        "id": "subject"
+                      },
+                      {
+                        "id": "authors"
+                      },
+                      {
+                        "id": "category"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "title": "Aufgaben",
+                  "component": "TodosRelatedToEntity",
+                  "config": {
+                    "entityType": "Todo",
+                    "columns": [
+                      {
+                        "id": "subject"
+                      },
+                      {
+                        "id": "deadline"
+                      },
+                      {
+                        "id": "startDate"
+                      },
+                      {
+                        "id": "assignedTo"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "_id": "view:event/:id"
+      },
+      "view:event": {
+        "component": "EntityList",
+        "config": {
+          "entityType": "event",
+          "columnGroups": {
+            "default": "Overview",
+            "mobile": "Overview",
+            "groups": [
+              {
+                "name": "Übersicht",
+                "columns": [
+                  "date",
+                  "name",
+                  "artDerVeranstaltung",
+                  "teilnehmer_innen",
+                  "verantwortliche"
+                ]
+              }
+            ]
+          },
+          "filters": [
+            {
+              "id": "date"
+            },
+            {
+              "id": "verantwortliche"
+            }
+          ]
+        },
+        "_id": "view:event"
       }
     }
   },
