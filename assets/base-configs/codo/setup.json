@@ -1,0 +1,64 @@
+[
+    {
+        "_id": "Config:SetupWizard",
+        "data": {
+            "steps": [
+                {
+                    "title": "Willkommen",
+                    "text": "Herzlich willkommen bei codo - Dem Datentool für Mentoringprojekte!\n\ncodo wurde speziell für die Arbeit in Patenschafts- und Mentoringprojekten entwickelt - gemeinsam mit Koordinator:innen aus der Praxis. Gefördert wird codo vom Bundesministerium für Familie, Senioren, Frauen und Jugend im Rahmen des Bundesprogrammes „Menschen stärken Menschen“.\n\nWerde Teil der codo-Community, dem bundesweiten Netzwerk aktiver Nutzer:innen. [Hier findest du weitere Informationen](https://codo-daten-tool.notion.site/3-Community-42ca96a92fb248fabb39c808c8fee390) und kannst dich anmelden.\n\n\nLos geht's:\n\nDie nächsten Schritte helfen dir, codo optimal für dein Projekt einzurichten. Du kannst den Stand jederzeit speichern und später über den Menüpunkt **Setup-Assistent** weitermachen. Hier findest du auch eine [Videoanleitung zur Einrichtung](https://codo-daten-tool.notion.site/Einrichtungsassistent-4f5a938313f841bca3c4df32dcc30172)."
+                },
+                {
+                    "title": "Profile anpassen",
+                    "text": "In diesem Schritt legst du fest, welche Informationen du in den Steckbriefen deiner Mentees und Mentor:innen erfassen möchtest. Außerdem kannst du hier die Vorlage zur Dokumentation des Patenschaftsprozesses anpassen.\n\nDu kannst jeweils:\n\n- Die Detailansicht eines Datensatzes anpassen (Einzelansicht eines Datensatzes)\n- Die Listenansicht anpassen (die kompakte Übersicht mit allen wichtigen Infos zu allen Mentees, Mentor:innen und Patenschaften)\n\nDas öffentliche Formular zur digitalen Erfassung von Daten kannst du ebenfalls hier einrichten.\n\nTipp: Weniger ist mehr. Verarbeite nur die Daten, die du auch wirklich zur Durchführung des Projektes brauchst!",
+                    "actions": [
+                        {
+                            "label": "Mentee-Profile anpassen",
+                            "link": "/admin/entity/Child"
+                        },
+                        {
+                            "label": "Mentor:innen-Profile anpassen",
+                            "link": "/admin/entity/School"
+                        },
+                        {
+                            "label": "Patenschafts-Details anpassen",
+                            "link": "/admin/entity/ChildSchoolRelation"
+                        },
+                        {
+                            "label": "Öffentliche Formulare einrichten",
+                            "link": "/admin/public-form"
+                        }
+                    ]
+                },
+                {
+                    "title": "Nutzer:innen hinzufügen",
+                    "text": "Mit diesen simplen Schritten erstellst du neue Nutzer:innen-Accounts für deine:n Kolleg:in. [Hier findest du auch eine Video-Anleitung](https://codo-daten-tool.notion.site/Mitarbeiter-innen-Account-anlegen-fd142c2398dd402ead283d3c734cae61).\n\nDie Mitarbeiter:innen bekommen per E-Mail ihre Zugangsdaten. Bitte gib nur den Personen Zugang, die ihn auch wirklich brauchen. Über die „Rollen“ legst du ihre Zugriffsrechte fest. Du kannst eine oder mehrere der folgenden Rollen zuweisen:\n\n- Standard-User: Zugriff mit einfachen Sicht- und Bearbeitungsrechten (kann keine weiteren Nutzer:innen hinzufügen),\n- Account-Manager: Kann neue Nutzer:innen anlegen und verwalten (hat ansonsten keine Sicht- und Bearbeitungsrechte)\n- Admin: Voller Zugriff auf alle Daten und Funktionen inklusive Setup-Wizard (sollte nur von ein bis zwei Administrator:innen genutzt werden!)",
+                    "actions": [
+                        {
+                            "label": "Nutzer:innen-Accounts hinzufügen",
+                            "link": "/user"
+                        }
+                    ]
+                },
+                {
+                    "title": "Daten importieren",
+                    "text": "Hier kannst du jetzt (oder auch später) eure bestehenden Daten importieren.\n\nZum Hochladen eurer Daten brauchst du die Daten in einer Excel-Tabelle im \"csv.-Format\". Die Datensätze für Mentor:innen, Mentees und Patenschaften müssen jeweils in einer eigenen Excel-Tabelle hochgeladen werden.\n\nDas Import-Modul von codo hilft euch dabei, die Spaltennamen in deinen Excel-Tabellen den passenden Datenfeldern in codo zuzuordnen.\n\nDer Prozess wird [hier im Video gezeigt](https://drive.google.com/file/d/1SUkd9G1sNtUo3IqVhRJKhRB8G1Dh1qiC/view?usp=drive_link). Eine detaillierte Anleitung zum Speichern von Daten im \"csv.-Format\" findest du [hier als PDF](https://drive.google.com/file/d/1H52z7iuaUcRS8eTpvPxVAYDV_P7mlOL8/view?usp=drive_link).\n\n\nDu brauchst Support? Wende dich an hallo@codo-mentoring.org oder an +49 40 87 88 969-62.",
+                    "actions": [
+                        {
+                            "label": "Daten importieren",
+                            "link": "/import"
+                        }
+                    ]
+                },
+                {
+                    "title": "Fertig",
+                    "text": "Du hast es geschafft!\n\nMache dich nun mit den Funktionen von codo vertraut. Weitere Anleitungen und Tutorials findest du unter [Notion](https://codo-daten-tool.notion.site/Dokumentation-c2a30cdc497c42adb8d6c67858f46aaf).\n\nTausche dich auch mit anderen Nutzer:innen in der codo-Community aus!\n\nViel Erfolg!"
+                }
+            ],
+            "openOnStart": true
+        }
+    },
+    {
+        "_id": "MarkdownContent:codo-hilfe",
+        "content": "Das codo-Handbuch mit ausführlichen Anleitungen findest du [hier in Notion](https://codo-daten-tool.notion.site/Dokumentation-c2a30cdc497c42adb8d6c67858f46aaf).\n\nDu hast Fragen oder technische Probleme? Kontaktiere uns\n- bei allgemeinen Fragen zum Tool oder Funktionserweiterungen von codo unter [hallo@codo-mentoring.org](hallo@codo-mentoring.org) oder unter 040 87 88 969 62 / 0176 56 74 63 47\n- bei Störungen oder kurzfristigen technischen Support unter [support@aam-digital.com](support@aam-digital.com)\n\nWir freuen uns darauf von dir zu hören.\nDein codo-Team\n\n---\n_codo_ ist ein gemeinsames Projekt der Stiftung Bürgermut und der BürgerStiftung Hamburg. Für die Bereitstellung und den technischen Support arbeiten wir zusammen mit Aam Digital."
+    }
+]
