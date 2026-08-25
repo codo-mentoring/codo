@@ -173,7 +173,9 @@
             "dataType": "entity",
             "additional": "Child",
             "label": "Mentees",
-            "isArray": true
+            "isArray": true,
+            "entityReferenceRole": "composite",
+            "anonymize": "retain"
           },
           "date": {
             "label": "Datum",
@@ -214,7 +216,8 @@
             "validators": {
               "required": true
             },
-            "additional": "interaction-type"
+            "additional": "interaction-type",
+            "anonymize": "retain"
           },
           "attachment": {
             "label": "Datei-Anhang",
@@ -232,13 +235,16 @@
             "additional": [
               "ChildSchoolRelation",
               "event"
-            ]
+            ],
+            "anonymize": "retain"
           },
           "schools": {
             "dataType": "entity",
             "additional": "School",
             "label": "Mentor:innen",
-            "isArray": true
+            "isArray": true,
+            "entityReferenceRole": "composite",
+            "anonymize": "retain"
           },
           "warningLevel": {
             "label": "Status",
@@ -374,7 +380,9 @@
               "event"
             ],
             "showInDetailsView": true,
-            "isArray": true
+            "isArray": true,
+            "entityReferenceRole": "composite",
+            "anonymize": "retain"
           },
           "repetitionInterval": {
             "label": "regelmäßige Wiederholung",
@@ -1409,7 +1417,8 @@
             "validators": {
               "required": true
             },
-            "anonymize": "retain"
+            "anonymize": "retain",
+            "entityReferenceRole": "composite"
           },
           "schoolId": {
             "dataType": "entity",
@@ -1418,7 +1427,8 @@
             "validators": {
               "required": true
             },
-            "anonymize": "retain"
+            "anonymize": "retain",
+            "entityReferenceRole": "aggregate"
           },
           "start": {
             "dataType": "date-only",
