@@ -150,10 +150,6 @@
           "markdownEntityId": "MarkdownContent:codo-hilfe"
         }
       },
-      "view:report": {
-        "component": "Reporting",
-        "config": {}
-      },
       "entity:Note": {
         "label": "Notiz",
         "labelPlural": "Notizen",
