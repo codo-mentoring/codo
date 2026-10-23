@@ -63,12 +63,12 @@
                   {
                     "label": "Mentee hinzufügen",
                     "icon": "user",
-                    "link": "/mentee/new"
+                    "link": "/c/mentee/new"
                   },
                   {
                     "label": "Mentor:in hinzufügen",
                     "icon": "user",
-                    "link": "/mentor/new"
+                    "link": "/c/mentor/new"
                   },
                   {
                     "label": "Daten importieren",
@@ -150,15 +150,9 @@
           "markdownEntityId": "MarkdownContent:codo-hilfe"
         }
       },
-      "view:import": {
-        "component": "Import",
-        "permittedUserRoles": [
-          "standard_user",
-          "admin_app"
-        ]
-      },
       "view:report": {
-        "component": "Reporting"
+        "component": "Reporting",
+        "config": {}
       },
       "entity:Note": {
         "label": "Notiz",
@@ -255,10 +249,8 @@
         }
       },
       "view:note": {
-        "component": "NotesManager",
+        "component": "EntityList",
         "config": {
-          "includeEventNotes": false,
-          "showEventNotesToggle": false,
           "columns": [
             {
               "id": "children",
@@ -300,7 +292,9 @@
             {
               "id": "authors"
             }
-          ]
+          ],
+          "entityType": "Note",
+          "clickMode": "popup-details"
         }
       },
       "view:note/:id": {
@@ -321,7 +315,8 @@
           "middleForm": [
             "subject",
             "text"
-          ]
+          ],
+          "entityType": "Note"
         }
       },
       "entity:Todo": {
@@ -812,8 +807,7 @@
                       }
                     ],
                     "filter": {
-                      "category.id": "AUSWAHL",
-                      "isActive": true
+                      "category.id": "AUSWAHL"
                     },
                     "entityType": "Note"
                   }
@@ -841,8 +835,7 @@
                       }
                     ],
                     "filter": {
-                      "category.id": "VORBEREITUNG_GESPRÄCH",
-                      "isActive": true
+                      "category.id": "VORBEREITUNG_GESPRÄCH"
                     },
                     "entityType": "Note"
                   }
@@ -1264,8 +1257,7 @@
                       }
                     ],
                     "filter": {
-                      "category.id": "VORBEREITUNG_GESPRÄCH",
-                      "isActive": true
+                      "category.id": "VORBEREITUNG_GESPRÄCH"
                     },
                     "entityType": "Note"
                   }
@@ -1627,8 +1619,7 @@
                       }
                     ],
                     "filter": {
-                      "category.id": "MATCHING",
-                      "isActive": true
+                      "category.id": "MATCHING"
                     },
                     "entityType": "Note"
                   }
@@ -1673,8 +1664,7 @@
                       }
                     ],
                     "filter": {
-                      "category.id": "BEGLEITUNG_GESPRÄCH",
-                      "isActive": true
+                      "category.id": "BEGLEITUNG_GESPRÄCH"
                     },
                     "entityType": "Note"
                   }
@@ -1757,8 +1747,7 @@
                       }
                     ],
                     "filter": {
-                      "category.id": "ABSCHLUSS",
-                      "isActive": true
+                      "category.id": "ABSCHLUSS"
                     },
                     "entityType": "Note"
                   }
@@ -1880,10 +1869,10 @@
           "prefilter": {
             "$or": [
               {
-                "projectStatus.id": "MATCHING_BEREIT"
+                "projectStatus": "MATCHING_BEREIT"
               },
               {
-                "projectStatus.id": "PATENSCHAFT_MATCHING_BEREIT"
+                "projectStatus": "PATENSCHAFT_MATCHING_BEREIT"
               }
             ]
           }
@@ -1907,13 +1896,13 @@
           "prefilter": {
             "$or": [
               {
-                "projectStatus.id": "MATCHING_BEREIT"
+                "projectStatus": "MATCHING_BEREIT"
               },
               {
-                "projectStatus.id": "PATENSCHAFT_MATCHING_BEREIT"
+                "projectStatus": "PATENSCHAFT_MATCHING_BEREIT"
               },
               {
-                "projectStatus.id": "PATENSCHAFT"
+                "projectStatus": "PATENSCHAFT"
               }
             ]
           }
@@ -1933,7 +1922,8 @@
         }
       },
       "view:matching": {
-        "component": "MatchingEntities"
+        "component": "MatchingEntities",
+        "config": {}
       },
       "entity:event": {
         "label": "Veranstaltung",
@@ -2123,7 +2113,7 @@
   {
     "_id": "Config:Permissions",
     "data": {
-      "public": [
+      "_public": [
         {
           "subject": [
             "Config",
@@ -2141,7 +2131,7 @@
           "action": "create"
         }
       ],
-      "default": [
+      "_default": [
         {
           "subject": [
             "Config",
@@ -2592,7 +2582,6 @@
     "_id": "ReportConfig:overview",
     "title": "Übersichts-Bericht",
     "mode": "sql",
-    "version": 2,
     "transformations": {
       "startDate": [
         "SQL_FROM_DATE"
